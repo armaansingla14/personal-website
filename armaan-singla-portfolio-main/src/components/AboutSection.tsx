@@ -72,7 +72,7 @@ const AboutSection = () => {
               {/* Profile photo */}
               <div className="w-80 h-80 rounded-2xl overflow-hidden border border-primary/20 shadow-lg">
                 <img 
-                  src="/lovable-uploads/68356f25-bbfd-47ce-8c3f-53883b2daca5.png" 
+                  src="/uploads/68356f25-bbfd-47ce-8c3f-53883b2daca5.png"
                   alt="Armaan Singla"
                   className="w-full h-full object-cover"
                 />
