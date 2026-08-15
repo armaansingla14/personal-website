@@ -31,6 +31,14 @@ const Home = () => {
       </p>
 
       <p className="text-xl leading-relaxed">
+        At this stage of my career, I'm focused on learning as much as I can in
+        the areas that genuinely inspire me. I'm still finding clarity on where I
+        want to end up, but the goal that guides me is simple: to figure out the
+        best way I can leave my mark on the world and humanity, while staying
+        true to my philosophical beliefs.
+      </p>
+
+      <p className="text-xl leading-relaxed">
         Currently, I'm at{" "}
         <a
           href="https://www.amd.com/"
