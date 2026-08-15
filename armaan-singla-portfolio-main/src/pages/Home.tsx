@@ -41,8 +41,8 @@ const Home = () => {
           AMD
         </a>{" "}
         as a Software Engineering Intern on the Product Security Office team,
-        building fuzzing agents, plus AI agents and software that automate the
-        team's workflows.
+        building fuzzing agents, along with AI agents and software that automate
+        the team's workflows.
       </p>
 
       <div className="pt-6 grid grid-cols-1 sm:grid-cols-2 gap-8">

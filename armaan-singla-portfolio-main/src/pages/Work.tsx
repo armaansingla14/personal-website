@@ -7,7 +7,7 @@ const experiences = [
     role: "Software Engineer Intern",
     period: "Summer 2026",
     description:
-      "On the Product Security Office (PSO) team, building fuzzing agents that uncover security vulnerabilities by bombarding systems with random, malformed inputs until they break. Also building AI agents that automate the team's workflows and boost productivity.",
+      "On the Product Security Office (PSO) team, building fuzzing agents that uncover security vulnerabilities. Also building AI agents that automate the team's workflows and take hours of manual work off their plate.",
   },
   {
     company: "Geotab",
