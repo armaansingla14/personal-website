@@ -21,7 +21,7 @@ const Index = () => {
       <footer className="border-t border-border py-8 px-6">
         <div className="max-w-4xl mx-auto text-center text-muted-foreground font-mono">
           <p>
-            :)
+            © 2026 Armaan Singla
           </p>
         </div>
       </footer>
