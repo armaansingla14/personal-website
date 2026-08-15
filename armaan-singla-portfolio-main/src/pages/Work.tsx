@@ -2,7 +2,7 @@ const experiences = [
   {
     company: "AMD",
     href: "https://www.amd.com/",
-    logo: "/logos/amd.png",
+    logo: "/logos/amd.jpg",
     location: "Markham, ON",
     role: "Software Engineer Intern",
     period: "Summer 2026",
@@ -12,7 +12,7 @@ const experiences = [
   {
     company: "Geotab",
     href: "https://www.geotab.com/",
-    logo: "/logos/geotab.png",
+    logo: "/logos/geotab.jpg",
     location: "Toronto, ON",
     role: "AI Agent Developer Intern",
     period: "Winter 2026",
@@ -22,7 +22,7 @@ const experiences = [
   {
     company: "Smith Engineering",
     href: "https://smithengineering.queensu.ca/",
-    logo: "/logos/smith.png",
+    logo: "/logos/smith.jpg",
     location: "Kingston, ON",
     role: "Teaching Assistant",
     period: "Fall 2025",
@@ -42,7 +42,7 @@ const experiences = [
   {
     company: "Home Trust Company",
     href: "https://www.hometrust.ca/",
-    logo: "/logos/hometrust.png",
+    logo: "/logos/hometrust.jpg",
     location: "Toronto, ON",
     role: "Data Science Intern",
     period: "Summer 2024",
