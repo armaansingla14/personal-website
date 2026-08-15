@@ -7,7 +7,7 @@ const experiences = [
     role: "Software Engineer Intern",
     period: "Summer 2026",
     description:
-      "Building LLM fuzzing agents for hardware and firmware test generation and crash triage, and building automation AI agents for the Product Security Office.",
+      "On the Product Security Office (PSO) team as a software engineer, building LLM fuzzing agents for hardware and firmware testing, plus full-stack AI agents that automate PSO workflows like security-notice generation.",
   },
   {
     company: "Geotab",
@@ -27,7 +27,7 @@ const experiences = [
     role: "Teaching Assistant",
     period: "Fall 2025",
     description:
-      "Led 5 student teams through the full electrical and computer engineering design practice, managing each software/electrical project from concept to completion as project manager. Also a TA for APSC 141, supporting 800+ first-year students.",
+      "Teaching assistant for ELEC 290: Electrical and Computer Engineering Design and Practice, leading 5 teams through building a full software and electrical project from concept to completion. Also a teaching assistant for APSC 141: Introduction to Computer Programming for Engineers, teaching 800+ first-years the basics of C and prompt engineering.",
   },
   {
     company: "Scotiabank",

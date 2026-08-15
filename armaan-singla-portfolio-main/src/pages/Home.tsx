@@ -5,6 +5,13 @@ const socials = [
   { label: "Email", href: "mailto:armaan.singla@outlook.com" },
 ];
 
+const interests = [
+  "Chess",
+  "Trading (stocks, crypto, commodities)",
+  "Philosophy",
+  "AI research (safety, ethics, robotics)",
+];
+
 const Home = () => {
   return (
     <div className="space-y-6">
@@ -33,27 +40,38 @@ const Home = () => {
         >
           AMD
         </a>{" "}
-        as a Software Engineering Intern in the Product Security Office, where I
-        build LLM fuzzing agents for hardware and firmware testing and automate
-        AI agents for the PSO team.
+        as a Software Engineering Intern on the Product Security Office team,
+        where I build fuzzing agents for hardware, firmware, and software, and
+        AI agents that automate workflows for the PSO team.
       </p>
 
-      <div className="pt-6">
-        <h2 className="text-2xl font-bold mb-3">Socials</h2>
-        <ul className="space-y-2 text-xl list-disc pl-6">
-          {socials.map((s) => (
-            <li key={s.label}>
-              <a
-                href={s.href}
-                target={s.href.startsWith("mailto:") ? undefined : "_blank"}
-                rel={s.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                className="link"
-              >
-                {s.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div className="pt-6 grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div>
+          <h2 className="text-2xl font-bold mb-3">Socials</h2>
+          <ul className="space-y-3 text-xl list-disc pl-6">
+            {socials.map((s) => (
+              <li key={s.label}>
+                <a
+                  href={s.href}
+                  target={s.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={s.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                  className="link"
+                >
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-bold mb-3">Interests</h2>
+          <ul className="space-y-3 text-xl list-disc pl-6">
+            {interests.map((i) => (
+              <li key={i}>{i}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
