@@ -9,7 +9,7 @@ const interests = [
   "Chess",
   "Trading (stocks, crypto, commodities)",
   "Philosophy",
-  "AI research (safety, ethics, robotics)",
+  "AI research (safety/ethics, reasoning, robotics)",
 ];
 
 const Home = () => {
@@ -27,7 +27,7 @@ const Home = () => {
         >
           Queen's University
         </a>{" "}
-        interested in machine learning agents, data, and security.
+        interested in machine learning, agents, data, and security.
       </p>
 
       <p className="text-xl leading-relaxed">
@@ -41,8 +41,8 @@ const Home = () => {
           AMD
         </a>{" "}
         as a Software Engineering Intern on the Product Security Office team,
-        where I build fuzzing agents for hardware, firmware, and software, and
-        AI agents that automate workflows for the PSO team.
+        building fuzzing agents, plus AI agents and software that automate the
+        team's workflows.
       </p>
 
       <div className="pt-6 grid grid-cols-1 sm:grid-cols-2 gap-8">
