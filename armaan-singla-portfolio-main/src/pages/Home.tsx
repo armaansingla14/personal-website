@@ -34,8 +34,8 @@ const Home = () => {
         Right now I'm focused on learning as much as I can about the things I'm
         genuinely passionate about. Day by day I'm gaining more clarity around
         where I want to end up, and what really drives me is figuring out how I
-        can leave a lasting mark on the world and give back to the people in it,
-        all while staying true to my philosophical beliefs.
+        can use my work to make a genuine, positive difference in the world, all
+        while staying true to my philosophical beliefs.
       </p>
 
       <p className="text-xl leading-relaxed">
