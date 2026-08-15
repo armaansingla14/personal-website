@@ -2,15 +2,17 @@ const experiences = [
   {
     company: "AMD",
     href: "https://www.amd.com/",
+    logo: "/logos/amd.png",
     location: "Markham, ON",
     role: "Software Engineer Intern",
     period: "Summer 2026",
     description:
-      "Building LLM fuzzing agents for hardware and firmware test generation and crash triage, plus JIRA-to-disclosure automation and AI security-notice generation for the Product Security Office.",
+      "Building LLM fuzzing agents for hardware and firmware test generation and crash triage, and building automation AI agents for the Product Security Office.",
   },
   {
     company: "Geotab",
     href: "https://www.geotab.com/",
+    logo: "/logos/geotab.png",
     location: "Toronto, ON",
     role: "AI Agent Developer Intern",
     period: "Winter 2026",
@@ -20,15 +22,17 @@ const experiences = [
   {
     company: "Smith Engineering",
     href: "https://smithengineering.queensu.ca/",
+    logo: "/logos/smith.png",
     location: "Kingston, ON",
     role: "Teaching Assistant",
     period: "Fall 2025",
     description:
-      "Selected as 1 of 2 undergraduates for ELEC 290; TA for APSC 141, supporting 800+ first-year students.",
+      "Led 5 student teams through the full electrical and computer engineering design practice, managing each software/electrical project from concept to completion as project manager. Also a TA for APSC 141, supporting 800+ first-year students.",
   },
   {
     company: "Scotiabank",
     href: "https://www.scotiabank.com/",
+    logo: "/logos/scotiabank.png",
     location: "Toronto, ON",
     role: "Data Science Intern",
     period: "Summer 2025",
@@ -38,6 +42,7 @@ const experiences = [
   {
     company: "Home Trust Company",
     href: "https://www.hometrust.ca/",
+    logo: "/logos/hometrust.png",
     location: "Toronto, ON",
     role: "Data Science Intern",
     period: "Summer 2024",
@@ -47,6 +52,7 @@ const experiences = [
   {
     company: "GuestLogix",
     href: "https://www.guestlogix.com/",
+    logo: "/logos/guestlogix.png",
     location: "Toronto, ON",
     role: "Software Engineer Intern",
     period: "Winter 2024",
@@ -58,31 +64,38 @@ const experiences = [
 const Work = () => {
   return (
     <div>
-      <h1 className="text-4xl font-bold tracking-tight mb-10">Work</h1>
+      <h1 className="text-5xl font-bold tracking-tight mb-10">Work</h1>
 
-      <div className="space-y-8">
+      <div className="space-y-10">
         {experiences.map((exp) => (
-          <div key={exp.company}>
-            <h2 className="text-xl">
-              <a
-                href={exp.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link font-bold"
-              >
-                {exp.company}
-              </a>{" "}
-              <span className="text-muted-foreground">— {exp.location}</span>
-            </h2>
-            <p className="font-bold mt-1">
-              {exp.role}{" "}
-              <span className="font-normal text-muted-foreground">
-                · {exp.period}
-              </span>
-            </p>
-            <p className="mt-2 leading-relaxed text-foreground/90">
-              {exp.description}
-            </p>
+          <div key={exp.company} className="flex items-start gap-4">
+            <div className="flex-1">
+              <h2 className="text-2xl">
+                <a
+                  href={exp.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link font-bold"
+                >
+                  {exp.company}
+                </a>{" "}
+                <span className="text-muted-foreground">— {exp.location}</span>
+              </h2>
+              <p className="text-xl font-bold mt-1">
+                {exp.role}{" "}
+                <span className="font-normal text-muted-foreground">
+                  · {exp.period}
+                </span>
+              </p>
+              <p className="mt-2 text-xl leading-relaxed text-foreground/90">
+                {exp.description}
+              </p>
+            </div>
+            <img
+              src={exp.logo}
+              alt={`${exp.company} logo`}
+              className="h-16 w-16 shrink-0 rounded-md object-contain"
+            />
           </div>
         ))}
       </div>

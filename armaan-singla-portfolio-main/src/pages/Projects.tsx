@@ -3,7 +3,7 @@ const projects = [
     title: "Ordinum",
     href: "https://ordinum.org/",
     description:
-      "AI governance and observability platform for auditing, replaying, and controlling AI decisions in production — capturing prompts, outputs, tool calls, and execution context as replayable, audit-ready timelines.",
+      "AI governance and observability platform for auditing, replaying, and controlling AI decisions in production, capturing prompts, outputs, tool calls, and execution context as replayable, audit-ready timelines.",
   },
   {
     title: "Veritas",
@@ -15,7 +15,7 @@ const projects = [
     title: "PR Pilot",
     href: "https://github.com/armaansingla14/pr-pilot",
     description:
-      "Full-stack ML app predicting pull-request risk with a RandomForest — 0.84 AUC and 6 ms inference latency, with automated CI/CD.",
+      "Full-stack ML app predicting pull-request risk with a RandomForest, reaching 0.84 AUC and 6 ms inference latency, with automated CI/CD.",
   },
   {
     title: "Landlord Review App",
@@ -47,7 +47,7 @@ const projects = [
       "Computer-vision system for autonomous robot detection using custom-trained and optimized YOLOv5.",
   },
   {
-    title: "Walking–Running Classifier",
+    title: "Walking-Running Classifier",
     href: "https://github.com/armaansingla14/Walking-Running-292",
     description:
       "ML project classifying human motion from smartphone accelerometer data, with a PyQt5 desktop application.",
@@ -63,12 +63,12 @@ const projects = [
 const Projects = () => {
   return (
     <div>
-      <h1 className="text-4xl font-bold tracking-tight mb-10">Projects</h1>
+      <h1 className="text-5xl font-bold tracking-tight mb-10">Projects</h1>
 
       <div className="space-y-7">
         {projects.map((p) => (
           <div key={p.title}>
-            <h2 className="text-xl">
+            <h2 className="text-2xl">
               <a
                 href={p.href}
                 target="_blank"
@@ -78,7 +78,7 @@ const Projects = () => {
                 {p.title}
               </a>
             </h2>
-            <p className="mt-1 leading-relaxed text-foreground/90">
+            <p className="mt-1 text-xl leading-relaxed text-foreground/90">
               {p.description}
             </p>
           </div>
