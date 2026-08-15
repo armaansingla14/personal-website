@@ -31,11 +31,10 @@ const Home = () => {
       </p>
 
       <p className="text-xl leading-relaxed">
-        At this stage of my career, I'm focused on learning as much as I can in
-        the areas that genuinely inspire me. I'm still finding clarity on where I
-        want to end up, but the goal that guides me is simple: to figure out the
-        best way I can leave my mark on the world and humanity, while staying
-        true to my philosophical beliefs.
+        Right now I'm just focused on learning as much as I can about the things
+        I'm genuinely passionate about. I haven't figured out exactly where I'll
+        end up, but what drives me is finding the best way to leave my mark on
+        the world while staying true to my philosophical beliefs.
       </p>
 
       <p className="text-xl leading-relaxed">
