@@ -32,8 +32,8 @@ const Art = () => {
 
   return (
     <div>
-      <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-3">Art</h1>
-      <p className="text-xl text-muted-foreground mb-8">
+      <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2 sm:mb-3">Art</h1>
+      <p className="text-base sm:text-lg text-muted-foreground mb-6">
         A few pieces I keep coming back to.
       </p>
 

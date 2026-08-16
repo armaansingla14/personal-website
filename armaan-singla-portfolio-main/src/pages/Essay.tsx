@@ -41,11 +41,11 @@ const Essay = () => {
   if (!essay) {
     return (
       <div>
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 sm:mb-6">
           Not found
         </h1>
-        <p className="text-xl mb-4">That essay doesn't exist.</p>
-        <Link to="/writing" className="link text-xl">
+        <p className="text-base sm:text-lg mb-4">That essay doesn't exist.</p>
+        <Link to="/writing" className="link text-base sm:text-lg">
           Back to Writing
         </Link>
       </div>
