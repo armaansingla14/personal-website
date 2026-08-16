@@ -28,7 +28,7 @@ export const essays: Essay[] = [
     slug: "riemann-hypothesis",
     title:
       "If AI Solves The Riemann Hypothesis, Will Humans Understand the Answer?",
-    date: "August 2026",
+    date: "August 15, 2026, 11:54 AM",
     description:
       "What Anthropic's Riemann result actually says, why a machine-checked proof might outrun human understanding, and what it would mean for AI to start creating knowledge instead of repeating it.",
     sections: [
