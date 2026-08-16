@@ -61,3 +61,21 @@
     @apply text-primary hover:underline underline-offset-2 transition-colors;
   }
 }
+
+/* staggered fade-up reveal for the Art gallery */
+@keyframes art-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.art-reveal {
+  opacity: 0;
+  animation: art-fade-up 0.5s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-reveal {
+    opacity: 1;
+    animation: none;
+  }
+}
