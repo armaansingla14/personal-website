@@ -10,9 +10,6 @@ import {
 } from "@/data/essays";
 
 // Offset (px from the viewport top) at which a heading counts as "reached".
-// Matches the sections' scroll-mt-24 (96px) below the sticky nav, with a
-// little slack so the highlight flips right as the heading settles.
-const NAV_OFFSET = 96;
 const SPY_OFFSET = 120;
 
 const useActiveSection = (ids: string[]) => {
@@ -68,37 +65,6 @@ const useActiveSection = (ids: string[]) => {
   }, [key]);
 
   return { activeId, setActiveId, lockRef };
-};
-
-// easeInOutQuad
-const ease = (t: number) =>
-  t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-
-// Consistent, rAF-driven smooth scroll. Native scrollInto({behavior:"smooth"})
-// stutters and skips over long distances; this animates every frame at a fixed
-// duration so a Sources -> Introduction jump stays clean.
-const smoothScrollTo = (targetY: number, onDone?: () => void) => {
-  const startY = window.scrollY;
-  const distance = targetY - startY;
-  if (Math.abs(distance) < 2) {
-    window.scrollTo(0, targetY);
-    onDone?.();
-    return;
-  }
-  const duration = Math.min(900, Math.max(350, Math.abs(distance) * 0.4));
-  let start: number | null = null;
-
-  const step = (ts: number) => {
-    if (start === null) start = ts;
-    const t = Math.min(1, (ts - start) / duration);
-    window.scrollTo(0, Math.round(startY + distance * ease(t)));
-    if (t < 1) {
-      requestAnimationFrame(step);
-    } else {
-      onDone?.();
-    }
-  };
-  requestAnimationFrame(step);
 };
 
 // Renders a LaTeX string as display math via KaTeX.
@@ -328,6 +294,7 @@ const Essay = () => {
   const essay = slug ? getEssay(slug) : undefined;
   const ids = essay ? essay.sections.map((s) => s.id) : [];
   const { activeId, setActiveId, lockRef } = useActiveSection(ids);
+  const unlockRef = useRef<number | null>(null);
 
   if (!essay) {
     return (
@@ -353,8 +320,6 @@ const Essay = () => {
     if (!el) return;
     e.preventDefault();
 
-    const targetY =
-      window.scrollY + el.getBoundingClientRect().top - NAV_OFFSET;
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -365,14 +330,19 @@ const Essay = () => {
     setActiveId(id);
     history.replaceState(null, "", `#${id}`);
 
-    if (reduceMotion) {
-      window.scrollTo(0, targetY);
-      lockRef.current = null;
-    } else {
-      smoothScrollTo(targetY, () => {
+    el.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+
+    // Release the spy lock once the scroll has settled.
+    if (unlockRef.current) window.clearTimeout(unlockRef.current);
+    unlockRef.current = window.setTimeout(
+      () => {
         lockRef.current = null;
-      });
-    }
+      },
+      reduceMotion ? 0 : 800
+    );
   };
 
   return (
