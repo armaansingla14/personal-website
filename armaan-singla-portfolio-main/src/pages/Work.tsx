@@ -97,7 +97,7 @@ const Entry = ({ exp }: { exp: Experience }) => (
           · {exp.period}
         </span>
       </p>
-      <p className="mt-1.5 sm:mt-2 text-sm sm:text-lg leading-snug sm:leading-relaxed text-foreground/90">
+      <p className="mt-1.5 sm:mt-2 text-base sm:text-lg leading-snug sm:leading-relaxed text-foreground/90">
         {exp.description}
       </p>
     </div>

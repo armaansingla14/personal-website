@@ -22,7 +22,7 @@ const Writing = () => {
                 {essay.title}
               </Link>
             </h2>
-            <p className="mt-1 text-sm sm:text-lg leading-snug sm:leading-relaxed text-foreground/90">
+            <p className="mt-1 text-base sm:text-lg leading-snug sm:leading-relaxed text-foreground/90">
               {essay.description}
             </p>
           </div>
