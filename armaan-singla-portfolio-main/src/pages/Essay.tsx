@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Clock } from "lucide-react";
-import { getEssay, readingTimeMinutes } from "@/data/essays";
+import {
+  getEssay,
+  readingTimeMinutes,
+  type EssayBlock,
+} from "@/data/essays";
 
 const useActiveSection = (ids: string[]) => {
   const [activeId, setActiveId] = useState<string>(ids[0] ?? "");
@@ -30,6 +34,180 @@ const useActiveSection = (ids: string[]) => {
   }, [ids]);
 
   return activeId;
+};
+
+// Renders caret exponents like "n^(s)" as real superscripts.
+const MathText = ({ text }: { text: string }) => {
+  const parts = text.split(/\^\(([^)]*)\)/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? <sup key={i}>{part}</sup> : <span key={i}>{part}</span>
+      )}
+    </>
+  );
+};
+
+const CriticalStripDiagram = () => (
+  <svg
+    viewBox="0 0 320 120"
+    className="mx-auto w-full max-w-sm"
+    role="img"
+    aria-label="Number line from 0 to 1 with a dashed critical line at one half holding three zeros."
+  >
+    <line x1="24" y1="86" x2="296" y2="86" stroke="currentColor" strokeWidth="1.5" />
+    {[
+      { x: 24, label: "0" },
+      { x: 160, label: "1/2" },
+      { x: 296, label: "1" },
+    ].map((t) => (
+      <g key={t.label}>
+        <line x1={t.x} y1="80" x2={t.x} y2="92" stroke="currentColor" strokeWidth="1.5" />
+        <text x={t.x} y="108" textAnchor="middle" fontSize="12" fill="currentColor">
+          {t.label}
+        </text>
+      </g>
+    ))}
+    <line
+      x1="160"
+      y1="14"
+      x2="160"
+      y2="86"
+      stroke="#B31217"
+      strokeWidth="1.5"
+      strokeDasharray="4 4"
+    />
+    {[26, 44, 62].map((cy) => (
+      <circle key={cy} cx="160" cy={cy} r="3.5" fill="#B31217" />
+    ))}
+    <text x="160" y="10" textAnchor="middle" fontSize="11" fill="#B31217">
+      critical line
+    </text>
+  </svg>
+);
+
+const ProgressionDiagram = () => (
+  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+    {[
+      { label: "41.6%", note: "old bound", accent: false },
+      { label: "~67.2%", note: "Claude", accent: true },
+      { label: "100%", note: "full RH", accent: false },
+    ].map((step, i) => (
+      <div key={step.label} className="flex items-center gap-2 sm:gap-3">
+        <div
+          className={
+            "rounded-md border px-3 py-2 text-center " +
+            (step.accent ? "border-primary text-primary" : "border-border")
+          }
+        >
+          <div className="text-base font-bold leading-none">{step.label}</div>
+          <div className="mt-1 text-xs text-muted-foreground">{step.note}</div>
+        </div>
+        {i < 2 && <span className="text-muted-foreground">→</span>}
+      </div>
+    ))}
+  </div>
+);
+
+const TreeNode = ({
+  children,
+  accent = false,
+}: {
+  children: string;
+  accent?: boolean;
+}) => (
+  <div
+    className={
+      "rounded-md border px-3 py-1.5 text-center text-sm " +
+      (accent ? "border-primary text-primary" : "border-border")
+    }
+  >
+    {children}
+  </div>
+);
+
+const DiscoveryTreeDiagram = () => (
+  <div className="flex flex-col items-center gap-2">
+    <TreeNode accent>AI solves a hard conjecture</TreeNode>
+    <span className="text-muted-foreground">↓</span>
+    <TreeNode>What capability enabled it?</TreeNode>
+    <span className="text-muted-foreground">↓</span>
+    <div className="grid w-full max-w-md grid-cols-2 gap-2">
+      <TreeNode>New math</TreeNode>
+      <TreeNode>New materials</TreeNode>
+      <TreeNode>Energy</TreeNode>
+      <TreeNode>Climate science</TreeNode>
+    </div>
+    <span className="text-muted-foreground">↓</span>
+    <TreeNode accent>A general discovery engine?</TreeNode>
+  </div>
+);
+
+const EssayDiagram = ({ variant }: { variant: string }) => {
+  if (variant === "critical-strip") return <CriticalStripDiagram />;
+  if (variant === "progression") return <ProgressionDiagram />;
+  if (variant === "discovery-tree") return <DiscoveryTreeDiagram />;
+  return null;
+};
+
+const Block = ({ block }: { block: EssayBlock }) => {
+  switch (block.type) {
+    case "p":
+      return (
+        <p className="text-lg leading-relaxed text-foreground/90">
+          {block.text}
+        </p>
+      );
+    case "math":
+      return (
+        <div className="overflow-x-auto rounded-md border border-border bg-muted/40 px-4 py-3 text-center">
+          <span className="font-serif text-lg italic">
+            <MathText text={block.text} />
+          </span>
+        </div>
+      );
+    case "figure":
+      return (
+        <figure className="my-2">
+          <img
+            src={block.src}
+            alt={block.alt}
+            className="mx-auto h-auto w-full max-w-md rounded-md border border-border"
+          />
+          <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+            {block.caption}
+          </figcaption>
+        </figure>
+      );
+    case "diagram":
+      return (
+        <figure className="my-2">
+          <EssayDiagram variant={block.variant} />
+          <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+            {block.caption}
+          </figcaption>
+        </figure>
+      );
+    case "sources":
+      return (
+        <ul className="space-y-2 text-lg">
+          {block.items.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      );
+    default:
+      return null;
+  }
 };
 
 const Essay = () => {
@@ -101,9 +279,9 @@ const Essay = () => {
             {essay.sections.map((s) => (
               <section key={s.id} id={s.id} className="scroll-mt-24">
                 <h2 className="text-xl font-bold mb-4">{s.heading}</h2>
-                <div className="space-y-5 text-lg leading-relaxed text-foreground/90">
-                  {s.content.map((para, i) => (
-                    <p key={i}>{para}</p>
+                <div className="space-y-5">
+                  {s.blocks.map((block, i) => (
+                    <Block key={i} block={block} />
                   ))}
                 </div>
               </section>
