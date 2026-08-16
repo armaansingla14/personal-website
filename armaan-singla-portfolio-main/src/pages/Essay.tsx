@@ -41,7 +41,7 @@ const Essay = () => {
   if (!essay) {
     return (
       <div>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6">
           Not found
         </h1>
         <p className="text-xl mb-4">That essay doesn't exist.</p>
@@ -83,7 +83,7 @@ const Essay = () => {
         </aside>
 
         <article className="max-w-2xl">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-tight">
             {essay.title}
           </h1>
           <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-base text-muted-foreground">

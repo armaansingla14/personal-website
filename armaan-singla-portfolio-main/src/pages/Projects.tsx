@@ -71,14 +71,14 @@ const projects: Project[] = [
 const Projects = () => {
   return (
     <div>
-      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-10">
+      <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6 sm:mb-8">
         Projects
       </h1>
 
-      <div className="space-y-7">
+      <div className="space-y-4 sm:space-y-7">
         {projects.map((p) => (
           <div key={p.title}>
-            <h2 className="flex items-center gap-2 text-2xl">
+            <h2 className="flex items-center gap-2 text-lg sm:text-2xl">
               <a
                 href={p.href}
                 target="_blank"
@@ -96,11 +96,14 @@ const Projects = () => {
                   title="Watch demo video"
                   className="text-primary transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
                 >
-                  <Youtube className="h-5 w-5" aria-hidden="true" />
+                  <Youtube
+                    className="h-4 w-4 sm:h-5 sm:w-5"
+                    aria-hidden="true"
+                  />
                 </a>
               )}
             </h2>
-            <p className="mt-1 text-xl leading-relaxed text-foreground/90">
+            <p className="mt-1 text-sm sm:text-xl leading-snug sm:leading-relaxed text-foreground/90">
               {p.description}
             </p>
           </div>

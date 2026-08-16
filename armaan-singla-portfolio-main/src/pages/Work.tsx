@@ -88,14 +88,14 @@ const previous: Experience[] = [
 const Entry = ({ exp }: { exp: Experience }) => (
   <div
     className={
-      "flex items-start gap-4" +
+      "flex items-start gap-3 sm:gap-4" +
       (exp.highlight
-        ? " rounded-lg border border-primary/20 bg-primary/5 p-4 -mx-4"
+        ? " rounded-lg border border-primary/20 bg-primary/5 p-3 sm:p-4 -mx-3 sm:-mx-4"
         : "")
     }
   >
     <div className="flex-1">
-      <h3 className="text-lg">
+      <h3 className="text-base sm:text-lg">
         <a
           href={exp.href}
           target="_blank"
@@ -117,14 +117,14 @@ const Entry = ({ exp }: { exp: Experience }) => (
           · {exp.period}
         </span>
       </p>
-      <p className="mt-1.5 text-base leading-snug text-foreground/90">
+      <p className="mt-1.5 text-sm sm:text-base leading-snug text-foreground/90">
         {exp.description}
       </p>
     </div>
     <img
       src={exp.logo}
       alt={`${exp.company} logo`}
-      className="h-12 w-12 shrink-0 rounded-md object-contain"
+      className="h-10 w-10 sm:h-12 sm:w-12 shrink-0 rounded-md object-contain"
     />
   </div>
 );
@@ -132,17 +132,19 @@ const Entry = ({ exp }: { exp: Experience }) => (
 const Work = () => {
   return (
     <div>
-      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8">Work</h1>
+      <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6 sm:mb-8">Work</h1>
 
-      <h2 className="text-xl font-bold mb-4">Currently</h2>
-      <div className="space-y-5">
+      <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Currently</h2>
+      <div className="space-y-4 sm:space-y-5">
         {current.map((exp) => (
           <Entry key={exp.company} exp={exp} />
         ))}
       </div>
 
-      <h2 className="text-xl font-bold mt-10 mb-4">Previously</h2>
-      <div className="space-y-5">
+      <h2 className="text-lg sm:text-xl font-bold mt-6 sm:mt-10 mb-3 sm:mb-4">
+        Previously
+      </h2>
+      <div className="space-y-4 sm:space-y-5">
         {previous.map((exp) => (
           <Entry key={exp.company} exp={exp} />
         ))}

@@ -11,7 +11,7 @@ const Layout = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="max-w-2xl mx-auto px-6 py-16 md:py-24">
+      <div className="max-w-2xl mx-auto px-6 py-8 sm:py-16 md:py-24">
         <Nav />
         <main>
           <Outlet />

@@ -10,7 +10,7 @@ const links = [
 
 const Nav = () => {
   return (
-    <nav className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2 mb-14 text-xl">
+    <nav className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2 mb-8 sm:mb-14 text-xl">
       {links.map((l) => (
         <NavLink
           key={l.to}

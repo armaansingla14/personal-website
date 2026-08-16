@@ -14,10 +14,10 @@ const interests = [
 
 const Home = () => {
   return (
-    <div className="space-y-6">
-      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Armaan Singla</h1>
+    <div className="space-y-4 sm:space-y-6">
+      <h1 className="text-3xl sm:text-5xl font-bold tracking-tight">Armaan Singla</h1>
 
-      <p className="text-xl leading-relaxed">
+      <p className="text-base sm:text-xl leading-relaxed">
         I'm a Computer Engineering student at{" "}
         <a
           href="https://www.queensu.ca/"
@@ -30,7 +30,7 @@ const Home = () => {
         interested in machine learning, agents, data, and security.
       </p>
 
-      <p className="text-xl leading-relaxed">
+      <p className="text-base sm:text-xl leading-relaxed">
         Right now I'm focused on learning as much as I can about the things I'm
         genuinely passionate about. Day by day I'm gaining more clarity around
         where I want to end up, and what really drives me is figuring out how I
@@ -38,7 +38,7 @@ const Home = () => {
         while staying true to my philosophical beliefs.
       </p>
 
-      <p className="text-xl leading-relaxed">
+      <p className="text-base sm:text-xl leading-relaxed">
         Currently, I'm at{" "}
         <a
           href="https://www.amd.com/"
@@ -53,10 +53,10 @@ const Home = () => {
         the team's workflows.
       </p>
 
-      <div className="pt-6 grid grid-cols-1 sm:grid-cols-2 gap-8">
+      <div className="pt-2 sm:pt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
         <div>
-          <h2 className="text-2xl font-bold mb-3">Socials</h2>
-          <ul className="space-y-3 text-xl list-disc pl-6">
+          <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">Socials</h2>
+          <ul className="space-y-1.5 sm:space-y-3 text-base sm:text-xl list-disc pl-6">
             {socials.map((s) => (
               <li key={s.label}>
                 <a
@@ -73,8 +73,8 @@ const Home = () => {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold mb-3">Interests</h2>
-          <ul className="space-y-3 text-xl list-disc pl-6">
+          <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">Interests</h2>
+          <ul className="space-y-1.5 sm:space-y-3 text-base sm:text-xl list-disc pl-6">
             {interests.map((i) => (
               <li key={i}>{i}</li>
             ))}
