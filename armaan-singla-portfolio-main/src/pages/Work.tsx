@@ -1,4 +1,15 @@
-const experiences = [
+type Experience = {
+  company: string;
+  href: string;
+  logo: string;
+  location?: string;
+  role: string;
+  period: string;
+  description: string;
+  highlight?: boolean;
+};
+
+const current: Experience[] = [
   {
     company: "AMD",
     href: "https://www.amd.com/",
@@ -9,6 +20,19 @@ const experiences = [
     description:
       "On the Product Security Office (PSO) team, building fuzzing agents that uncover security vulnerabilities. Also building AI agents that automate the team's workflows and take hours of manual work off their plate.",
   },
+  {
+    company: "Ordinum",
+    href: "https://ordinum.org/",
+    logo: "/logos/ordinum_ai_logo.jpg",
+    role: "Co-Founder",
+    period: "2025 — Present",
+    description:
+      "AI governance and observability platform for auditing, replaying, and controlling AI decisions in production.",
+    highlight: true,
+  },
+];
+
+const previous: Experience[] = [
   {
     company: "Geotab",
     href: "https://www.geotab.com/",
@@ -61,42 +85,66 @@ const experiences = [
   },
 ];
 
+const Entry = ({ exp }: { exp: Experience }) => (
+  <div
+    className={
+      "flex items-start gap-4" +
+      (exp.highlight
+        ? " rounded-lg border border-primary/20 bg-primary/5 p-4 -mx-4"
+        : "")
+    }
+  >
+    <div className="flex-1">
+      <h3 className="text-lg">
+        <a
+          href={exp.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link font-bold"
+        >
+          {exp.company}
+        </a>
+        {exp.location && (
+          <span className="whitespace-nowrap text-muted-foreground">
+            {" "}
+            — {exp.location}
+          </span>
+        )}
+      </h3>
+      <p className="text-sm font-bold mt-0.5">
+        {exp.role}{" "}
+        <span className="font-normal text-muted-foreground">
+          · {exp.period}
+        </span>
+      </p>
+      <p className="mt-1.5 text-base leading-snug text-foreground/90">
+        {exp.description}
+      </p>
+    </div>
+    <img
+      src={exp.logo}
+      alt={`${exp.company} logo`}
+      className="h-12 w-12 shrink-0 rounded-md object-contain"
+    />
+  </div>
+);
+
 const Work = () => {
   return (
     <div>
-      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-10">Work</h1>
+      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8">Work</h1>
 
-      <div className="space-y-10">
-        {experiences.map((exp) => (
-          <div key={exp.company} className="flex items-start gap-4">
-            <div className="flex-1">
-              <h2 className="text-2xl">
-                <a
-                  href={exp.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link font-bold"
-                >
-                  {exp.company}
-                </a>{" "}
-                <span className="whitespace-nowrap text-muted-foreground">— {exp.location}</span>
-              </h2>
-              <p className="text-xl font-bold mt-1">
-                {exp.role}{" "}
-                <span className="font-normal text-muted-foreground">
-                  · {exp.period}
-                </span>
-              </p>
-              <p className="mt-2 text-xl leading-relaxed text-foreground/90">
-                {exp.description}
-              </p>
-            </div>
-            <img
-              src={exp.logo}
-              alt={`${exp.company} logo`}
-              className="h-16 w-16 shrink-0 rounded-md object-contain"
-            />
-          </div>
+      <h2 className="text-xl font-bold mb-4">Currently</h2>
+      <div className="space-y-5">
+        {current.map((exp) => (
+          <Entry key={exp.company} exp={exp} />
+        ))}
+      </div>
+
+      <h2 className="text-xl font-bold mt-10 mb-4">Previously</h2>
+      <div className="space-y-5">
+        {previous.map((exp) => (
+          <Entry key={exp.company} exp={exp} />
         ))}
       </div>
     </div>
