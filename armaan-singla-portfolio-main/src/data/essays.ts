@@ -30,7 +30,7 @@ export const essays: Essay[] = [
       "If AI Solves the Riemann Hypothesis, Will Humans Understand the Answer?",
     date: "August 15, 2026, 11:54 AM",
     description:
-      "Why Anthropic's Riemann result actually means, why AI may begin discovering things humans cannot fully understand, and what happens when machines stop repeating knowledge and start creating it.",
+      "What Anthropic's Riemann result actually means, why AI may begin discovering things humans cannot fully understand, and what happens when machines stop repeating knowledge and start creating it.",
     sections: [
       {
         id: "introduction",
