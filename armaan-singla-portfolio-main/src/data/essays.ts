@@ -42,11 +42,11 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "In August 2026, Anthropic said that a research version of Claude had taken a serious run at the problem. Claude did not solve the Riemann Hypothesis, but it found a new result that meaningfully improved what mathematicians can rigorously prove about it.",
+            text: "In August 2026, Anthropic announced that a research version of Claude had taken a serious run at the problem. Claude did not solve the Riemann Hypothesis, but it produced a new result that meaningfully improved what mathematicians can rigorously prove about it.",
           },
           {
             type: "p",
-            text: "That raises a bigger question. What if solving the Riemann Hypothesis is not the revolutionary part? What if the real story is that an AI learned how to attack a problem this hard at all?",
+            text: "That points to a bigger question. What if solving the Riemann Hypothesis is not the revolutionary part, and the real story is that an AI learned how to attack a problem this hard at all?",
           },
         ],
       },
@@ -66,63 +66,62 @@ export const essays: Essay[] = [
             type: "p",
             text: "Riemann studied their distribution through the zeta function:",
           },
-          { type: "math", text: "ζ(s) = 1 + 1/2^(s) + 1/3^(s) + 1/4^(s) + ⋯" },
+          {
+            type: "math",
+            text: "\\zeta(s) = 1 + \\frac{1}{2^{s}} + \\frac{1}{3^{s}} + \\frac{1}{4^{s}} + \\cdots",
+          },
           { type: "p", text: "For example, when s = 2:" },
-          { type: "math", text: "ζ(2) = 1 + 1/4 + 1/9 + 1/16 + ⋯" },
+          {
+            type: "math",
+            text: "\\zeta(2) = 1 + \\frac14 + \\frac19 + \\frac1{16} + \\cdots",
+          },
           {
             type: "p",
-            text: "Leonhard Euler found that the same function can also be written using nothing but prime numbers:",
+            text: "Leonhard Euler found that the same function can be written using nothing but the prime numbers:",
           },
           {
             type: "math",
-            text: "ζ(s) = product over primes p of 1 / (1 − p^(−s))",
+            text: "\\zeta(s) = \\prod_{p\\ \\text{prime}} \\frac{1}{1 - p^{-s}}",
           },
           {
             type: "p",
-            text: "That identity is why the zeta function matters for primes. Information about every prime is baked into it.",
-          },
-          {
-            type: "figure",
-            src: "/essays/riemann-hypothesis/zeta-series.png",
-            alt: "The Riemann zeta function written as the infinite series ζ(s) = Σ 1/n^s.",
-            caption:
-              "Figure 1. The Riemann zeta function in its simplest series form.",
+            text: "That identity is the bridge between the zeta function and the primes. Information about every prime is baked into it.",
           },
           {
             type: "p",
-            text: "Riemann then looked at the inputs where the extended zeta function equals zero. These are its zeros. The interesting ones, the non-trivial zeros, live in a region where the real part of s sits between 0 and 1.",
+            text: "Riemann then looked at the inputs where the zeta function, suitably extended, equals zero. These are its zeros. The interesting ones, called the non-trivial zeros, live in the region where the real part of s sits between 0 and 1.",
           },
           {
             type: "p",
             text: "Riemann guessed that all of them lie on a single vertical line, exactly halfway across:",
           },
-          { type: "math", text: "Re(s) = 1/2" },
-          { type: "p", text: "The first non-trivial zero is roughly:" },
-          { type: "math", text: "s = 1/2 + 14.1347 i" },
+          { type: "math", text: "\\operatorname{Re}(s) = \\tfrac12" },
+          { type: "p", text: "The first non-trivial zero sits at roughly:" },
+          { type: "math", text: "s = \\tfrac12 + 14.1347\\,i" },
           {
             type: "p",
-            text: "The primes themselves do not sit on the 1/2 line. The zeros of the zeta function do. Because those zeros are tied to the primes, their positions tell mathematicians how far the real distribution of primes can wander from the pattern we expect.",
+            text: "Here is the part people often get backwards. The primes themselves do not sit on the 1/2 line. The zeros of the zeta function do. Because those zeros are tied to the primes through Euler's identity, their positions control how far the real distribution of primes can drift from the pattern mathematicians expect.",
           },
           {
             type: "p",
-            text: "So the Riemann Hypothesis comes down to one line:",
+            text: "So the whole Riemann Hypothesis comes down to one line:",
           },
           {
             type: "p",
             text: "Every non-trivial zero of the zeta function has real part exactly 1/2.",
           },
           {
-            type: "figure",
-            src: "/essays/riemann-hypothesis/critical-line-polar.png",
-            alt: "A polar plot of the Riemann zeta function evaluated along the critical line ζ(1/2 + it).",
-            caption:
-              "Figure 2. A polar plot of the zeta function along the critical line. Each time the curve passes through the origin, the function is zero.",
-          },
-          {
             type: "diagram",
             variant: "critical-strip",
             caption:
-              "Figure 3. The critical strip runs from 0 to 1. Riemann's guess is that every non-trivial zero lands on the line at 1/2.",
+              "Figure 1. Non-trivial zeros lie inside the critical strip 0 < Re(s) < 1. The Riemann Hypothesis says every one of them lies on the critical line Re(s) = 1/2.",
+          },
+          {
+            type: "figure",
+            src: "/essays/riemann-hypothesis/critical-line-polar.png",
+            alt: "Complex-plane trace of the output of the Riemann zeta function evaluated along the critical line, ζ(1/2 + it).",
+            caption:
+              "Figure 2. The path traced by the output ζ(1/2+it) as t changes. The input is already restricted to the critical line Re(s)=1/2. Whenever the curve passes through the origin, the zeta function equals zero.",
           },
         ],
       },
@@ -136,25 +135,29 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "Before this work, mathematicians could rigorously prove that at least about 41.6% of the relevant zeros were simple and sat on the critical line. Claude built an argument that pushed the guarantee past two-thirds, with an optimized figure near 67.25%.",
+            text: "Before this work, mathematicians could rigorously prove that at least about 41.6% of the relevant zeros were simple and sat on the critical line. Claude built an argument that pushed the guarantee past two-thirds, with an optimized figure near 67.25%.[^2]",
           },
           {
             type: "p",
-            text: "This does not mean Claude solved 67% of the Riemann Hypothesis. The hypothesis says 100% of the non-trivial zeros lie on the 1/2 line. Claude's result raises the floor, the minimum share that mathematics can currently guarantee, not the odds that the whole thing is true.",
+            text: "This does not mean Claude solved 67% of the Riemann Hypothesis. The hypothesis says 100% of the non-trivial zeros lie on the 1/2 line. Claude's result raises the floor, the minimum share mathematics can currently guarantee, and says nothing about the odds that the whole statement is true.",
           },
           {
             type: "p",
-            text: "By Anthropic's account, Claude worked through roughly 650 dead ends first. It then spent about a day and a half coordinating around 60 subagents and produced tens of millions of tokens of output. Those agents wrote code, tested ideas, hunted for counterexamples, picked apart each other's reasoning, and dug through existing research.",
+            text: "By Anthropic's account, Claude worked through roughly 650 dead ends before it found the argument. It then spent about a day and a half coordinating around 60 subagents and produced about 31 million tokens of output.[^2] Those agents wrote code, ran numerical checks, hunted for counterexamples, picked apart each other's reasoning, and dug through existing research.",
           },
           {
             type: "p",
-            text: "The result came from combining known mathematics in a way nobody had tried. That detail matters. Claude did not conjure a new field out of nothing. It stood on work built by generations of mathematicians and spotted a connection they had walked past.",
+            text: "The result is very recent. Anthropic's mathematicians validated it, Claude produced a formally verifiable proof, and outside experts examined the paper. A claim this fresh will still take time to face the broader scrutiny of the mathematical community, so it is worth holding with the caution any brand new result deserves.[^1]",
+          },
+          {
+            type: "p",
+            text: "The argument came from combining existing mathematical ideas in a way that had not previously been known to produce this bound. That detail matters. Claude did not conjure a new field out of nothing. It stood on work built by generations of mathematicians and noticed a connection they had walked past.",
           },
           {
             type: "diagram",
             variant: "progression",
             caption:
-              "Figure 4. 67.2% is not two-thirds of a proof. It is a lower bound on the share of zeros now proven to lie on the critical line.",
+              "Figure 3. Claude raised the proven lower bound from about 41.6% to 67.2%. The full Riemann Hypothesis is the separate claim that 100% of non-trivial zeros lie on the critical line.",
           },
         ],
       },
@@ -165,7 +168,7 @@ export const essays: Essay[] = [
           { type: "p", text: "Because there are infinitely many of them." },
           {
             type: "p",
-            text: "A computer can check billions, trillions, or far more. Every zero it tests might land on 1/2, and there is still another one waiting past the edge of what it checked. If the hypothesis were false, the first counterexample could sit unimaginably far out.",
+            text: "Computers have already checked the first 10 trillion relevant zeros and found every one of them exactly where Riemann predicted.[^3] The hypothesis is still open because 10 trillion is a finite number and the zeros continue forever. If Riemann was wrong, the first stray zero could sit unimaginably far past anything a computer has reached.",
           },
           {
             type: "p",
@@ -173,17 +176,17 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "We do not accept that 1 + 1 = 2 because calculators have confirmed it a billion times. In formal mathematics, the numbers and the addition are defined by axioms and rules of logic, and 1 + 1 = 2 follows necessarily from them.",
+            text: "We do not accept that 1 + 1 = 2 because calculators have confirmed it a billion times. The numbers and the addition are defined by axioms and rules of logic, and 1 + 1 = 2 follows necessarily from them. A proof is not repeated observation. It shows why something cannot be otherwise.",
           },
           {
             type: "p",
-            text: "Riemann demands the same kind of certainty. A proof has to show that if the zeta function is zero at any non-trivial point, then the real part of that point must be 1/2. Not for the first trillion zeros. For every possible zero, forever.",
+            text: "Riemann demands that same kind of certainty. A proof has to show that if the zeta function is zero at any non-trivial point, then the real part of that point must be 1/2. Not for the first trillion zeros. For every possible zero, forever.",
           },
         ],
       },
       {
         id: "reaching-100",
-        heading: "What If AI Reaches 100%?",
+        heading: "What If AI Actually Proves It?",
         blocks: [
           {
             type: "p",
@@ -191,19 +194,19 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "After 167 years, the problem is finally closed. And a second question walks in right behind it: would humans actually understand the proof?",
+            text: "After 167 years the problem is finally closed, and a second question walks in right behind it. Would humans actually understand the proof?",
           },
           {
             type: "p",
-            text: "Maybe the AI writes an elegant argument in mathematics we already speak. Mathematicians could read it, simplify it, and eventually get it.",
+            text: "Maybe the AI writes an elegant argument in mathematics we already speak. Mathematicians could read it, simplify it, and eventually absorb it into the textbooks.",
           },
           {
             type: "p",
-            text: "But a future system could also invent new abstractions, new notation, and new ways of reasoning tuned for machines rather than people. Then we reach a strange place where a formal proof checker confirms the argument is correct while no single human quite follows why it works.",
+            text: "A more advanced system could instead invent new abstractions, new notation, and new ways of reasoning built for machines rather than people. A formal proof checker could confirm the argument holds while no single human quite follows why it works.",
           },
           {
             type: "p",
-            text: "For centuries, a proof has meant two things at once: certainty and understanding. AI might pull those two apart.",
+            text: "For centuries, a proof has meant two things at once, certainty and understanding. AI might pull those two apart. We could end up certain that Riemann is true and still unable to explain, in human terms, why.",
           },
         ],
       },
@@ -221,19 +224,19 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "The Riemann Hypothesis is a conjecture, something mathematicians strongly believe but cannot prove. Cracking a conjecture this hard can take fresh ideas, connections between distant areas, hundreds of failed attempts, counterexamples aimed at your own reasoning, and new abstractions when the old tools run out.",
+            text: "A conjecture is something mathematicians strongly believe but cannot yet prove. Cracking one this hard can demand fresh ideas, connections between distant areas, hundreds of failed attempts, counterexamples aimed at your own reasoning, and new abstractions when the old tools run out.",
           },
           {
             type: "p",
-            text: "None of those skills are specific to number theory.",
+            text: "Many of those skills are not specific to number theory.",
           },
           {
             type: "p",
-            text: "If an AI can do that reliably, Riemann becomes evidence that a much broader scientific ability has shown up. The same kind of system might go looking for better battery materials, new catalysts, sharper climate models, cheaper desalination, new medicines, or progress on fusion.",
+            text: "This is the part I find more interesting than the proof itself. If an AI can do all of that reliably, then Riemann is less a milestone in mathematics and more evidence that a broad scientific ability has arrived. The same kind of system could go looking for better battery materials, new catalysts, sharper climate models, cheaper desalination, new medicines, or progress on fusion.",
           },
           {
             type: "p",
-            text: "Solving Riemann would not magically fix global warming or hand us unlimited energy. Real problems drag in physics, engineering, economics, and politics. The point is the transferable problem-solving ability underneath, not the theorem.",
+            text: "Solving Riemann would not magically fix global warming or hand us unlimited energy. Real problems drag in physics, engineering, economics, and politics, and no theorem clears those away. What would carry over is the problem-solving ability underneath, not the specific result.",
           },
           {
             type: "p",
@@ -241,17 +244,13 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "The breakthrough there is not the machine that solved Riemann. It is a machine that learned how to solve problems at the edge of human knowledge.",
-          },
-          {
-            type: "p",
-            text: "Riemann might end up mattering less as an answer and more as a signal that AI has crossed from repeating human knowledge into making new knowledge.",
+            text: "The breakthrough there is not the machine that solved one famous problem. It is a machine that learned how to work at the edge of human knowledge.",
           },
           {
             type: "diagram",
             variant: "discovery-tree",
             caption:
-              "Figure 5. The bigger breakthrough may be the transferable discovery process, not the theorem itself.",
+              "Figure 4. The bigger breakthrough may be the transferable discovery process, not the theorem itself.",
           },
         ],
       },
@@ -269,11 +268,11 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "Mathematics would not fall apart, but one of its most famous expectations would. The cultural shock would be larger if an AI found the counterexample. Generations of mathematicians would have studied a problem dating to 1859, only for a machine to surface a truth the greatest human minds had missed.",
+            text: "Mathematics would not fall apart, but one of its oldest expectations would. The shock would be greater if an AI found the counterexample. Generations of mathematicians would have studied a problem dating to 1859, only for a machine to surface a truth the greatest human minds had missed.",
           },
           {
             type: "p",
-            text: "At that point, computers are no longer just calculating faster than us. They are turning up truths beyond the current reach of human mathematical reasoning.",
+            text: "A machine like that is no longer just calculating faster than we can. It is turning up truths beyond the current reach of human mathematical reasoning.",
           },
         ],
       },
@@ -291,19 +290,19 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "Anthropic's work already hands us an early version of this fight. Its technical paper credits Claude while also naming the humans who posed the problem, guided the work, checked it, formalized it, and wrote it up.",
+            text: "Anthropic's work already hands us an early version of this fight. Its technical paper credits Claude while also naming the humans who posed the problem, guided the work, checked it, formalized it, and wrote it up.[^2]",
           },
           {
             type: "p",
-            text: "Future scientific credit may have to be split the same way.",
+            text: "Future scientific credit may have to be split the same way, and the norms for doing that do not exist yet.",
           },
           {
             type: "p",
-            text: "There is an emotional question too. Would it feel like a win to watch a problem that survived nearly two centuries of human effort fall to an AI in an afternoon?",
+            text: "The credit question bothers me for a different reason. Would it feel like a win to watch a problem that survived nearly two centuries of human effort fall to an AI in an afternoon?",
           },
           {
             type: "p",
-            text: "Maybe we feel triumphant, because humans built the machine. Or maybe we feel sidelined, because the final act of discovery no longer belonged to us.",
+            text: "I don't know whether that would feel like a human victory. We built the machine, but we would not have made the discovery.",
           },
         ],
       },
@@ -317,11 +316,11 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "But the larger meaning may have little to do with that number.",
+            text: "The larger meaning may have little to do with that number.",
           },
           {
             type: "p",
-            text: "For most of history, the frontier of mathematics was capped by what humans could discover and understand. AI could lift the first cap long before it lifts the second.",
+            text: "For most of history, the frontier of mathematics was capped by two things, what humans could discover and what humans could understand. AI could lift the first cap long before it lifts the second.",
           },
           {
             type: "p",
@@ -329,15 +328,11 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "Before that point, AI mostly learned from knowledge humans had already created. After it, AI may increasingly create knowledge humans do not yet have.",
+            text: "AI is already beginning to contribute new knowledge, including the result discussed here. A full solution to something like the Riemann Hypothesis would make that shift impossible to dismiss. The question would no longer be whether AI can participate in frontier discovery, but how far beyond the human frontier it can go.",
           },
           {
             type: "p",
-            text: "The central question may stop being whether AI can solve the Riemann Hypothesis, and become this: if AI learns to solve problems humanity cannot, what else will it learn to solve?",
-          },
-          {
-            type: "p",
-            text: "And if the answers start arriving faster than we can understand them, will we still be leading the scientific revolution, or just watching it happen?",
+            text: "That is the part of this story I find difficult to shake. The day an AI solves Riemann may matter less because one famous conjecture is finally gone, and more because of what the solution says about who is now capable of discovering things humanity cannot. If answers start arriving faster than we can understand them, I am not sure whether we will still be leading the scientific revolution or simply trying to keep up with it.",
           },
         ],
       },
@@ -351,6 +346,10 @@ export const essays: Essay[] = [
               {
                 label: "Anthropic, \"Claude and the Riemann zeta function\"",
                 href: "https://www.anthropic.com/research/riemann-zeta",
+              },
+              {
+                label: "Anthropic, Riemann zeta technical paper (PDF)",
+                href: "https://www-cdn.anthropic.com/95c246936988e43127bc6b2ceb7077c1dad2d68e.pdf",
               },
               {
                 label: "Clay Mathematics Institute, \"Riemann Hypothesis\"",

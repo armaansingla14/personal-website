@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Clock } from "lucide-react";
+import katex from "katex";
+import "katex/dist/katex.min.css";
 import {
   getEssay,
   readingTimeMinutes,
@@ -53,13 +55,31 @@ const useActiveSection = (ids: string[]) => {
   return activeId;
 };
 
-// Renders caret exponents like "n^(s)" as real superscripts.
-const MathText = ({ text }: { text: string }) => {
-  const parts = text.split(/\^\(([^)]*)\)/g);
+// Renders a LaTeX string as display math via KaTeX.
+const Math = ({ latex }: { latex: string }) => {
+  const html = katex.renderToString(latex, {
+    displayMode: true,
+    throwOnError: false,
+  });
+  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+};
+
+// Renders paragraph text, turning inline "[^n]" tokens into superscript
+// citation links that jump to the matching numbered source.
+const ParagraphText = ({ text }: { text: string }) => {
+  const parts = text.split(/\[\^(\d+)\]/g);
   return (
     <>
       {parts.map((part, i) =>
-        i % 2 === 1 ? <sup key={i}>{part}</sup> : <span key={i}>{part}</span>
+        i % 2 === 1 ? (
+          <sup key={i} className="text-xs">
+            <a href={`#source-${part}`} className="text-primary">
+              {part}
+            </a>
+          </sup>
+        ) : (
+          <span key={i}>{part}</span>
+        )
       )}
     </>
   );
@@ -67,62 +87,94 @@ const MathText = ({ text }: { text: string }) => {
 
 const CriticalStripDiagram = () => (
   <svg
-    viewBox="0 0 320 120"
-    className="mx-auto w-full max-w-sm"
+    viewBox="0 0 300 244"
+    className="mx-auto w-full max-w-sm text-foreground"
     role="img"
-    aria-label="Number line from 0 to 1 with a dashed critical line at one half holding three zeros."
+    aria-label="The complex plane with horizontal axis Re(s) and vertical axis Im(s). A shaded critical strip runs between Re(s)=0 and Re(s)=1, with a dashed red critical line at Re(s)=1/2 holding several zeros."
   >
-    <line x1="24" y1="86" x2="296" y2="86" stroke="currentColor" strokeWidth="1.5" />
+    {/* critical strip band between Re=0 and Re=1 */}
+    <rect x="100" y="20" width="100" height="200" fill="#B31217" opacity="0.06" />
+    {/* strip boundaries: Re=0 (doubles as the Im axis) and Re=1 */}
+    <line x1="100" y1="16" x2="100" y2="224" stroke="currentColor" strokeWidth="1.25" />
+    <line x1="200" y1="16" x2="200" y2="224" stroke="currentColor" strokeWidth="1" opacity="0.6" />
+    {/* real axis, Im = 0, with arrowhead */}
+    <line x1="42" y1="120" x2="268" y2="120" stroke="currentColor" strokeWidth="1.25" />
+    <path d="M268 120 l-6 -3 v6 z" fill="currentColor" />
+    {/* Im axis arrowhead at top */}
+    <path d="M100 16 l-3 6 h6 z" fill="currentColor" />
+    {/* critical line Re = 1/2 */}
+    <line x1="150" y1="16" x2="150" y2="224" stroke="#B31217" strokeWidth="1.5" strokeDasharray="4 4" />
+    {/* zeros on the critical line, symmetric about the real axis */}
+    {[48, 74, 96, 150, 176, 202].map((cy) => (
+      <circle key={cy} cx="150" cy={cy} r="3.5" fill="#B31217" />
+    ))}
+    {/* axis ticks */}
     {[
-      { x: 24, label: "0" },
-      { x: 160, label: "1/2" },
-      { x: 296, label: "1" },
+      { x: 100, label: "0" },
+      { x: 150, label: "1/2" },
+      { x: 200, label: "1" },
     ].map((t) => (
-      <g key={t.label}>
-        <line x1={t.x} y1="80" x2={t.x} y2="92" stroke="currentColor" strokeWidth="1.5" />
-        <text x={t.x} y="108" textAnchor="middle" fontSize="12" fill="currentColor">
-          {t.label}
-        </text>
-      </g>
+      <text key={t.label} x={t.x} y="135" textAnchor="middle" fontSize="10" fill="currentColor">
+        {t.label}
+      </text>
     ))}
-    <line
-      x1="160"
-      y1="14"
-      x2="160"
-      y2="86"
-      stroke="#B31217"
-      strokeWidth="1.5"
-      strokeDasharray="4 4"
-    />
-    {[26, 44, 62].map((cy) => (
-      <circle key={cy} cx="160" cy={cy} r="3.5" fill="#B31217" />
-    ))}
-    <text x="160" y="10" textAnchor="middle" fontSize="11" fill="#B31217">
+    {/* axis labels */}
+    <text x="262" y="112" textAnchor="end" fontSize="11" fontStyle="italic" fill="currentColor">
+      Re(s)
+    </text>
+    <text x="108" y="26" textAnchor="start" fontSize="11" fontStyle="italic" fill="currentColor">
+      Im(s)
+    </text>
+    {/* region and line labels */}
+    <text x="150" y="13" textAnchor="middle" fontSize="10" fill="currentColor" opacity="0.6">
+      critical strip
+    </text>
+    <text x="150" y="240" textAnchor="middle" fontSize="10" fill="#B31217">
       critical line
     </text>
   </svg>
 );
 
+const Pill = ({
+  label,
+  note,
+  accent = false,
+}: {
+  label: string;
+  note: string;
+  accent?: boolean;
+}) => (
+  <div
+    className={
+      "rounded-md border px-3 py-2 text-center " +
+      (accent ? "border-primary text-primary" : "border-border")
+    }
+  >
+    <div className="text-base font-bold leading-none">{label}</div>
+    <div className="mt-1 text-xs text-muted-foreground">{note}</div>
+  </div>
+);
+
 const ProgressionDiagram = () => (
-  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-    {[
-      { label: "41.6%", note: "old bound", accent: false },
-      { label: "~67.2%", note: "Claude", accent: true },
-      { label: "100%", note: "full RH", accent: false },
-    ].map((step, i) => (
-      <div key={step.label} className="flex items-center gap-2 sm:gap-3">
-        <div
-          className={
-            "rounded-md border px-3 py-2 text-center " +
-            (step.accent ? "border-primary text-primary" : "border-border")
-          }
-        >
-          <div className="text-base font-bold leading-none">{step.label}</div>
-          <div className="mt-1 text-xs text-muted-foreground">{step.note}</div>
-        </div>
-        {i < 2 && <span className="text-muted-foreground">→</span>}
+  <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch sm:justify-center">
+    <div className="rounded-md border border-border/60 bg-muted/30 p-3">
+      <p className="mb-2 text-center text-xs font-bold uppercase tracking-wide text-muted-foreground">
+        Proven lower bound
+      </p>
+      <div className="flex items-center justify-center gap-2 sm:gap-3">
+        <Pill label="41.6%" note="old bound" />
+        <span className="text-muted-foreground">→</span>
+        <Pill label="67.2%" note="Claude" accent />
       </div>
-    ))}
+    </div>
+    <div className="rounded-md border border-border/60 bg-muted/30 p-3">
+      <p className="mb-2 text-center text-xs font-bold uppercase tracking-wide text-muted-foreground">
+        Full Riemann Hypothesis
+      </p>
+      <div className="flex h-[calc(100%-1.75rem)] items-center justify-center">
+        <Pill label="100%" note="of non-trivial zeros" />
+      </div>
+    </div>
   </div>
 );
 
@@ -172,15 +224,13 @@ const Block = ({ block }: { block: EssayBlock }) => {
     case "p":
       return (
         <p className="text-lg leading-relaxed text-foreground/90">
-          {block.text}
+          <ParagraphText text={block.text} />
         </p>
       );
     case "math":
       return (
         <div className="overflow-x-auto rounded-md border border-border bg-muted/40 px-4 py-3 text-center">
-          <span className="font-serif text-lg italic">
-            <MathText text={block.text} />
-          </span>
+          <Math latex={block.text} />
         </div>
       );
     case "figure":
@@ -207,9 +257,9 @@ const Block = ({ block }: { block: EssayBlock }) => {
       );
     case "sources":
       return (
-        <ul className="space-y-2 text-lg">
-          {block.items.map((item) => (
-            <li key={item.href}>
+        <ol className="list-decimal space-y-2 pl-6 text-lg">
+          {block.items.map((item, i) => (
+            <li key={item.href} id={`source-${i + 1}`} className="scroll-mt-24">
               <a
                 href={item.href}
                 target="_blank"
@@ -220,7 +270,7 @@ const Block = ({ block }: { block: EssayBlock }) => {
               </a>
             </li>
           ))}
-        </ul>
+        </ol>
       );
     default:
       return null;
