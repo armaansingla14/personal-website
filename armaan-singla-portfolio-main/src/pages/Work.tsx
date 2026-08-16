@@ -1,3 +1,5 @@
+import Seo from "@/components/Seo";
+
 type Experience = {
   company: string;
   href: string;
@@ -110,6 +112,11 @@ const Entry = ({ exp }: { exp: Experience }) => (
 const Work = () => {
   return (
     <div>
+      <Seo
+        title="Work | Armaan Singla"
+        description="Armaan Singla's work experience across software engineering, AI, security, and data, including AMD, Geotab, Scotiabank, and co-founding Ordinum."
+        path="/work"
+      />
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 sm:mb-6">Work</h1>
 
       <div className="space-y-4 sm:space-y-6">

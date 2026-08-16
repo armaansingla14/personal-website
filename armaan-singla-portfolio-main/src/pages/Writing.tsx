@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { essays } from "@/data/essays";
+import Seo from "@/components/Seo";
 
 const Writing = () => {
   return (
     <div>
+      <Seo
+        title="Writing | Armaan Singla"
+        description="Essays by Armaan Singla on AI, intelligence, progress, and technology."
+        path="/writing"
+      />
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 sm:mb-6">
         Writing
       </h1>

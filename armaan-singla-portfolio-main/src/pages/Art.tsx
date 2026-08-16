@@ -5,6 +5,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import Seo from "@/components/Seo";
 
 type Artwork = {
   src: string;
@@ -32,6 +33,11 @@ const Art = () => {
 
   return (
     <div>
+      <Seo
+        title="Art | Armaan Singla"
+        description="A gallery of paintings, engravings, and photographs Armaan Singla keeps coming back to."
+        path="/art"
+      />
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2 sm:mb-3">Art</h1>
       <p className="text-base sm:text-lg text-muted-foreground mb-6">
         A few pieces I keep coming back to.

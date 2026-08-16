@@ -1,4 +1,5 @@
 import { Youtube } from "lucide-react";
+import Seo from "@/components/Seo";
 
 type Project = {
   title: string;
@@ -7,7 +8,7 @@ type Project = {
   video?: string;
 };
 
-const projects: Project[] = [
+const featured: Project[] = [
   {
     title: "Veritas",
     href: "https://github.com/armaansingla14/Veritas",
@@ -34,6 +35,9 @@ const projects: Project[] = [
     description:
       "Real-time computer-vision system training YOLOv5 to detect robot armor plates for RoboMaster, with a label-preserving augmentation pipeline over a ~1,200-image dataset.",
   },
+];
+
+const more: Project[] = [
   {
     title: "Walking vs. Jumping Classifier",
     href: "https://github.com/armaansingla14/Walking-Running-292",
@@ -68,45 +72,74 @@ const projects: Project[] = [
   },
 ];
 
+const ProjectItem = ({
+  project: p,
+  featured = false,
+}: {
+  project: Project;
+  featured?: boolean;
+}) => (
+  <div>
+    <h3
+      className={
+        "flex items-center gap-2 " +
+        (featured ? "text-lg sm:text-xl" : "text-base sm:text-lg")
+      }
+    >
+      <a
+        href={p.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="link font-bold"
+      >
+        {p.title}
+      </a>
+      {p.video && (
+        <a
+          href={p.video}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Watch the ${p.title} demo video`}
+          title="Watch demo video"
+          className="text-primary transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+        >
+          <Youtube className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+        </a>
+      )}
+    </h3>
+    <p className="mt-1 text-sm sm:text-lg leading-snug sm:leading-relaxed text-foreground/90">
+      {p.description}
+    </p>
+  </div>
+);
+
 const Projects = () => {
   return (
     <div>
+      <Seo
+        title="Projects | Armaan Singla"
+        description="Engineering and AI projects by Armaan Singla, spanning machine learning, computer vision, agents, and full-stack applications."
+        path="/projects"
+      />
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 sm:mb-6">
         Projects
       </h1>
 
+      <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-5">
+        Featured Projects
+      </h2>
+      <div className="space-y-5 sm:space-y-6">
+        {featured.map((p) => (
+          <ProjectItem key={p.title} project={p} featured />
+        ))}
+      </div>
+
+      <h2 className="text-lg sm:text-xl font-bold mt-10 sm:mt-12 mb-4 sm:mb-5">
+        More Projects
+      </h2>
       <div className="space-y-4 sm:space-y-5">
-        {projects.map((p) => (
-          <div key={p.title}>
-            <h2 className="flex items-center gap-2 text-base sm:text-lg">
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link font-bold"
-              >
-                {p.title}
-              </a>
-              {p.video && (
-                <a
-                  href={p.video}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Watch the ${p.title} demo video`}
-                  title="Watch demo video"
-                  className="text-primary transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-                >
-                  <Youtube
-                    className="h-4 w-4 sm:h-5 sm:w-5"
-                    aria-hidden="true"
-                  />
-                </a>
-              )}
-            </h2>
-            <p className="mt-1 text-sm sm:text-lg leading-snug sm:leading-relaxed text-foreground/90">
-              {p.description}
-            </p>
-          </div>
+        {more.map((p) => (
+          <ProjectItem key={p.title} project={p} />
         ))}
       </div>
     </div>

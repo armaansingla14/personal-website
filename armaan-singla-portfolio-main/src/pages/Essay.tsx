@@ -8,6 +8,14 @@ import {
   readingTimeMinutes,
   type EssayBlock,
 } from "@/data/essays";
+import Seo from "@/components/Seo";
+
+const SITE_URL = "https://www.armaansingla.me";
+
+// Per-essay social image; falls back to the site default when unmapped.
+const ESSAY_OG_IMAGE: Record<string, string> = {
+  "riemann-hypothesis": `${SITE_URL}/og/og-riemann.png`,
+};
 
 // Offset (px from the viewport top) at which a heading counts as "reached".
 const SPY_OFFSET = 120;
@@ -311,6 +319,18 @@ const Essay = () => {
   }
 
   const minutes = readingTimeMinutes(essay);
+  const essayPath = `/writing/${essay.slug}`;
+  const essayImage = ESSAY_OG_IMAGE[essay.slug] ?? `${SITE_URL}/og/og-default.png`;
+  const essayJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: essay.title,
+    description: essay.description,
+    author: { "@type": "Person", name: "Armaan Singla", url: SITE_URL },
+    datePublished: "2026-08-15",
+    image: essayImage,
+    mainEntityOfPage: `${SITE_URL}${essayPath}`,
+  };
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -347,6 +367,14 @@ const Essay = () => {
 
   return (
     <div className="lg:relative lg:left-1/2 lg:w-[92vw] lg:max-w-5xl lg:-translate-x-1/2">
+      <Seo
+        title={`${essay.title} | Armaan Singla`}
+        description={essay.description}
+        path={essayPath}
+        type="article"
+        image={essayImage}
+        jsonLd={essayJsonLd}
+      />
       <div className="lg:grid lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-12">
         <aside className="hidden lg:block">
           <nav className="sticky top-24">

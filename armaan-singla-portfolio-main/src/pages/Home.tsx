@@ -1,3 +1,5 @@
+import Seo from "@/components/Seo";
+
 const socials = [
   { label: "X", href: "https://x.com/armsingla" },
   { label: "GitHub", href: "https://github.com/armaansingla14" },
@@ -15,6 +17,11 @@ const interests = [
 const Home = () => {
   return (
     <div className="space-y-5 sm:space-y-6">
+      <Seo
+        title="Armaan Singla | AI, Agents & Security"
+        description="Computer Engineering student at Queen's University working on AI agents, software, security, data, and intelligent systems. Currently at AMD and co-founding Ordinum."
+        path="/"
+      />
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Armaan Singla</h1>
 
       <p className="text-base sm:text-lg leading-relaxed">
