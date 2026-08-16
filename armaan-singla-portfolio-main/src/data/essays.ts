@@ -118,7 +118,7 @@ export const essays: Essay[] = [
           },
           {
             type: "figure",
-            src: "/essays/riemann-hypothesis/critical-line-polar.png",
+            src: "/essays/riemann-hypothesis/complex-plane-trace.png",
             alt: "Complex-plane trace of the output of the Riemann zeta function evaluated along the critical line, ζ(1/2 + it).",
             caption:
               "Figure 2. The path traced by the output ζ(1/2+it) as t changes. The input is already restricted to the critical line Re(s)=1/2. Whenever the curve passes through the origin, the zeta function equals zero.",
