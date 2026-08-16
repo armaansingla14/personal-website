@@ -261,7 +261,7 @@ const Block = ({ block }: { block: EssayBlock }) => {
             alt={block.alt}
             className="mx-auto h-auto w-full max-w-md rounded-md border border-border"
           />
-          <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+          <figcaption className="mt-2 text-center text-[15px] sm:text-sm text-muted-foreground">
             {block.caption}
           </figcaption>
         </figure>
@@ -270,14 +270,14 @@ const Block = ({ block }: { block: EssayBlock }) => {
       return (
         <figure className="my-2">
           <EssayDiagram variant={block.variant} />
-          <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+          <figcaption className="mt-3 text-center text-[15px] sm:text-sm text-muted-foreground">
             {block.caption}
           </figcaption>
         </figure>
       );
     case "sources":
       return (
-        <ol className="list-decimal space-y-2 pl-6 text-lg">
+        <ol className="list-decimal space-y-2 pl-6 text-base sm:text-lg">
           {block.items.map((item, i) => (
             <li key={item.href} id={`source-${i + 1}`} className="scroll-mt-24">
               <a
@@ -403,7 +403,7 @@ const Essay = () => {
         </aside>
 
         <article className="max-w-2xl">
-          <h1 className="text-xl sm:text-3xl font-bold tracking-tight leading-tight">
+          <h1 className="text-3xl font-bold tracking-tight leading-tight">
             {essay.title}
           </h1>
           <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-base text-muted-foreground">
@@ -420,7 +420,7 @@ const Essay = () => {
           <div className="mt-10 space-y-12">
             {essay.sections.map((s) => (
               <section key={s.id} id={s.id} className="scroll-mt-24">
-                <h2 className="text-xl font-bold mb-4">{s.heading}</h2>
+                <h2 className="text-2xl sm:text-xl font-bold mb-4">{s.heading}</h2>
                 <div className="space-y-5">
                   {s.blocks.map((block, i) => (
                     <Block key={i} block={block} />
