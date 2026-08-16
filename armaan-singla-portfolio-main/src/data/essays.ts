@@ -27,7 +27,7 @@ export const essays: Essay[] = [
   {
     slug: "riemann-hypothesis",
     title:
-      "If AI Solves The Riemann Hypothesis, Will Humans Understand the Answer?",
+      "If AI Solves the Riemann Hypothesis, Will Humans Understand the Answer?",
     date: "August 15, 2026, 11:54 AM",
     description:
       "What Anthropic's Riemann result actually says, why a machine-checked proof might outrun human understanding, and what it would mean for AI to start creating knowledge instead of repeating it.",
@@ -143,7 +143,7 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "By Anthropic's account, Claude worked through roughly 650 dead ends before it found the argument. It then spent about a day and a half coordinating around 60 subagents and produced about 31 million tokens of output.[^2] Those agents wrote code, ran numerical checks, hunted for counterexamples, picked apart each other's reasoning, and dug through existing research.",
+            text: "By Anthropic's account, Claude worked through roughly 650 dead ends before it found the argument. It then spent about a day and a half coordinating around 60 subagents and produced about 31 million tokens of output.[^1] Those agents wrote code, ran numerical checks, hunted for counterexamples, picked apart each other's reasoning, and dug through existing research.",
           },
           {
             type: "p",
@@ -268,7 +268,7 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "Mathematics would not fall apart, but one of its oldest expectations would. The shock would be greater if an AI found the counterexample. Generations of mathematicians would have studied a problem dating to 1859, only for a machine to surface a truth the greatest human minds had missed.",
+            text: "Mathematics would not fall apart, but one of its most famous conjectures would. The shock would be greater if an AI found the counterexample. Generations of mathematicians would have studied a problem dating to 1859, only for a machine to surface a truth the greatest human minds had missed.",
           },
           {
             type: "p",
