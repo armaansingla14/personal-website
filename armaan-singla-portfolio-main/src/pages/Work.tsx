@@ -14,7 +14,7 @@ const experiences = [
     href: "https://www.geotab.com/",
     logo: "/logos/geotab.jpg",
     location: "Toronto, ON",
-    role: "AI Agent Developer Intern",
+    role: "Software Engineer Intern",
     period: "Winter 2026",
     description:
       "On the Agent Center of Excellence (Enterprise Data Office): built multi-agent and search-evaluator systems, A2A agent-to-agent orchestration, and ROI validation with Google ADK, Claude, and Gemini.",
@@ -64,7 +64,7 @@ const experiences = [
 const Work = () => {
   return (
     <div>
-      <h1 className="text-5xl font-bold tracking-tight mb-10">Work</h1>
+      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-10">Work</h1>
 
       <div className="space-y-10">
         {experiences.map((exp) => (
@@ -79,7 +79,7 @@ const Work = () => {
                 >
                   {exp.company}
                 </a>{" "}
-                <span className="text-muted-foreground">— {exp.location}</span>
+                <span className="whitespace-nowrap text-muted-foreground">— {exp.location}</span>
               </h2>
               <p className="text-xl font-bold mt-1">
                 {exp.role}{" "}
