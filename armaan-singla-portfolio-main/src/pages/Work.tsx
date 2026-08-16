@@ -2,7 +2,6 @@ type Experience = {
   company: string;
   href: string;
   logo: string;
-  location?: string;
   role: string;
   period: string;
   description: string;
@@ -13,7 +12,6 @@ const current: Experience[] = [
     company: "AMD",
     href: "https://www.amd.com/",
     logo: "/logos/amd.jpg",
-    location: "Markham, ON",
     role: "Software Engineer Intern",
     period: "Summer 2026",
     description:
@@ -35,7 +33,6 @@ const previous: Experience[] = [
     company: "Geotab",
     href: "https://www.geotab.com/",
     logo: "/logos/geotab.jpg",
-    location: "Toronto, ON",
     role: "Software Engineer Intern",
     period: "Winter 2026",
     description:
@@ -45,7 +42,6 @@ const previous: Experience[] = [
     company: "Smith Engineering",
     href: "https://smithengineering.queensu.ca/",
     logo: "/logos/smith.jpg",
-    location: "Kingston, ON",
     role: "Teaching Assistant",
     period: "Fall 2025",
     description:
@@ -55,7 +51,6 @@ const previous: Experience[] = [
     company: "Scotiabank",
     href: "https://www.scotiabank.com/",
     logo: "/logos/scotiabank.png",
-    location: "Toronto, ON",
     role: "Data Science Intern",
     period: "Summer 2025",
     description:
@@ -65,7 +60,6 @@ const previous: Experience[] = [
     company: "Home Trust Company",
     href: "https://www.hometrust.ca/",
     logo: "/logos/hometrust.jpg",
-    location: "Toronto, ON",
     role: "Data Science Intern",
     period: "Summer 2024",
     description:
@@ -75,7 +69,6 @@ const previous: Experience[] = [
     company: "GuestLogix",
     href: "https://www.guestlogix.com/",
     logo: "/logos/guestlogix.png",
-    location: "Toronto, ON",
     role: "Software Engineer Intern",
     period: "Winter 2024",
     description:
@@ -86,7 +79,7 @@ const previous: Experience[] = [
 const Entry = ({ exp }: { exp: Experience }) => (
   <div className="flex items-start gap-4">
     <div className="flex-1">
-      <h3 className="text-lg sm:text-2xl">
+      <h3 className="text-base sm:text-lg">
         <a
           href={exp.href}
           target="_blank"
@@ -95,27 +88,21 @@ const Entry = ({ exp }: { exp: Experience }) => (
         >
           {exp.company}
         </a>
-        {exp.location && (
-          <span className="whitespace-nowrap text-muted-foreground">
-            {" "}
-            — {exp.location}
-          </span>
-        )}
       </h3>
-      <p className="text-base sm:text-lg font-bold mt-0.5">
+      <p className="text-sm sm:text-base font-bold mt-0.5">
         {exp.role}{" "}
         <span className="font-normal text-muted-foreground">
           · {exp.period}
         </span>
       </p>
-      <p className="mt-1.5 sm:mt-2 text-sm sm:text-xl leading-snug sm:leading-relaxed text-foreground/90">
+      <p className="mt-1.5 sm:mt-2 text-sm sm:text-lg leading-snug sm:leading-relaxed text-foreground/90">
         {exp.description}
       </p>
     </div>
     <img
       src={exp.logo}
       alt={`${exp.company} logo`}
-      className="h-12 w-12 sm:h-16 sm:w-16 shrink-0 rounded-md object-contain"
+      className="h-10 w-10 sm:h-12 sm:w-12 shrink-0 rounded-md object-contain"
     />
   </div>
 );
@@ -123,14 +110,14 @@ const Entry = ({ exp }: { exp: Experience }) => (
 const Work = () => {
   return (
     <div>
-      <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6 sm:mb-8">Work</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 sm:mb-6">Work</h1>
 
-      <div className="space-y-5 sm:space-y-8">
-        <h2 className="text-lg sm:text-2xl font-bold">Currently</h2>
+      <div className="space-y-4 sm:space-y-6">
+        <h2 className="text-lg sm:text-xl font-bold">Currently</h2>
         {current.map((exp) => (
           <Entry key={exp.company} exp={exp} />
         ))}
-        <h2 className="text-lg sm:text-2xl font-bold">Previously</h2>
+        <h2 className="text-lg sm:text-xl font-bold">Previously</h2>
         {previous.map((exp) => (
           <Entry key={exp.company} exp={exp} />
         ))}

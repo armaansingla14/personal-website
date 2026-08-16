@@ -83,7 +83,7 @@ const Essay = () => {
         </aside>
 
         <article className="max-w-2xl">
-          <h1 className="text-2xl sm:text-4xl font-bold tracking-tight leading-tight">
+          <h1 className="text-xl sm:text-3xl font-bold tracking-tight leading-tight">
             {essay.title}
           </h1>
           <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-base text-muted-foreground">
@@ -100,8 +100,8 @@ const Essay = () => {
           <div className="mt-10 space-y-12">
             {essay.sections.map((s) => (
               <section key={s.id} id={s.id} className="scroll-mt-24">
-                <h2 className="text-2xl font-bold mb-4">{s.heading}</h2>
-                <div className="space-y-5 text-xl leading-relaxed text-foreground/90">
+                <h2 className="text-xl font-bold mb-4">{s.heading}</h2>
+                <div className="space-y-5 text-lg leading-relaxed text-foreground/90">
                   {s.content.map((para, i) => (
                     <p key={i}>{para}</p>
                   ))}
