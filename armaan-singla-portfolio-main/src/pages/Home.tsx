@@ -31,11 +31,10 @@ const Home = () => {
       </p>
 
       <p className="text-base sm:text-lg leading-relaxed">
-        Right now I'm focused on learning as much as I can about the things I'm
-        genuinely passionate about. Day by day I'm gaining more clarity around
-        where I want to end up, and what really drives me is figuring out how I
-        can use my work to make a genuine difference in the world, all
-        while staying true to my philosophical beliefs.
+        Right now, I’m trying to understand not only what I want to build, but what I believe is worth building. 
+        I’m drawn to questions around intelligence, progress, human agency, and the role technology should play in our lives. 
+        As I figure out where I want my work to take me, I want to keep questioning the assumptions behind it while staying 
+        grounded in my philosophical beliefs and the principles that matter to me.
       </p>
 
       <p className="text-base sm:text-lg leading-relaxed">
