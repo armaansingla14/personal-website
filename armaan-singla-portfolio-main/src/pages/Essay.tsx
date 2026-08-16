@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Clock } from "lucide-react";
 import katex from "katex";
@@ -9,18 +9,29 @@ import {
   type EssayBlock,
 } from "@/data/essays";
 
+// Offset (px from the viewport top) at which a heading counts as "reached".
+// Matches the sections' scroll-mt-24 (96px) below the sticky nav, with a
+// little slack so the highlight flips right as the heading settles.
+const NAV_OFFSET = 96;
+const SPY_OFFSET = 120;
+
 const useActiveSection = (ids: string[]) => {
   const [activeId, setActiveId] = useState<string>(ids[0] ?? "");
+  // While a click-driven scroll animates, it "locks" the active id to the
+  // target so the highlight lands cleanly instead of flickering through every
+  // section it passes over.
+  const lockRef = useRef<string | null>(null);
   const key = ids.join(",");
 
   useEffect(() => {
     if (ids.length === 0) return;
 
-    // A section is active once its top scrolls above this line (just below
-    // the sticky nav, matching the sections' scroll-mt-24 = 96px offset).
-    const OFFSET = 110;
+    let ticking = false;
 
-    const update = () => {
+    const compute = () => {
+      ticking = false;
+      if (lockRef.current) return;
+
       const doc = document.documentElement;
       const atBottom =
         window.innerHeight + window.scrollY >= doc.scrollHeight - 2;
@@ -32,27 +43,62 @@ const useActiveSection = (ids: string[]) => {
       let current = ids[0];
       for (const id of ids) {
         const el = document.getElementById(id);
-        if (!el) continue;
-        if (el.getBoundingClientRect().top <= OFFSET) {
+        if (el && el.getBoundingClientRect().top <= SPY_OFFSET) {
           current = id;
-        } else {
-          break;
         }
       }
       setActiveId(current);
     };
 
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(compute);
+      }
+    };
+
+    compute();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
-  return activeId;
+  return { activeId, setActiveId, lockRef };
+};
+
+// easeInOutQuad
+const ease = (t: number) =>
+  t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
+// Consistent, rAF-driven smooth scroll. Native scrollInto({behavior:"smooth"})
+// stutters and skips over long distances; this animates every frame at a fixed
+// duration so a Sources -> Introduction jump stays clean.
+const smoothScrollTo = (targetY: number, onDone?: () => void) => {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  if (Math.abs(distance) < 2) {
+    window.scrollTo(0, targetY);
+    onDone?.();
+    return;
+  }
+  const duration = Math.min(900, Math.max(350, Math.abs(distance) * 0.4));
+  let start: number | null = null;
+
+  const step = (ts: number) => {
+    if (start === null) start = ts;
+    const t = Math.min(1, (ts - start) / duration);
+    window.scrollTo(0, Math.round(startY + distance * ease(t)));
+    if (t < 1) {
+      requestAnimationFrame(step);
+    } else {
+      onDone?.();
+    }
+  };
+  requestAnimationFrame(step);
 };
 
 // Renders a LaTeX string as display math via KaTeX.
@@ -281,7 +327,7 @@ const Essay = () => {
   const { slug } = useParams();
   const essay = slug ? getEssay(slug) : undefined;
   const ids = essay ? essay.sections.map((s) => s.id) : [];
-  const activeId = useActiveSection(ids);
+  const { activeId, setActiveId, lockRef } = useActiveSection(ids);
 
   if (!essay) {
     return (
@@ -306,14 +352,27 @@ const Essay = () => {
     const el = document.getElementById(id);
     if (!el) return;
     e.preventDefault();
+
+    const targetY =
+      window.scrollY + el.getBoundingClientRect().top - NAV_OFFSET;
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    el.scrollIntoView({
-      behavior: reduceMotion ? "auto" : "smooth",
-      block: "start",
-    });
+
+    // Own the highlight for the duration of the scroll so it moves straight to
+    // the clicked item instead of stuttering through the ones in between.
+    lockRef.current = id;
+    setActiveId(id);
     history.replaceState(null, "", `#${id}`);
+
+    if (reduceMotion) {
+      window.scrollTo(0, targetY);
+      lockRef.current = null;
+    } else {
+      smoothScrollTo(targetY, () => {
+        lockRef.current = null;
+      });
+    }
   };
 
   return (
