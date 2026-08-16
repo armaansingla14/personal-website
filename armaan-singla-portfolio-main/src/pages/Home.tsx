@@ -53,10 +53,10 @@ const Home = () => {
         the team's workflows.
       </p>
 
-      <div className="pt-2 sm:pt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+      <div className="pt-2 sm:pt-6 grid grid-cols-2 gap-3 sm:gap-8">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">Socials</h2>
-          <ul className="space-y-1.5 sm:space-y-3 text-base sm:text-xl list-disc pl-6">
+          <h2 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-3">Socials</h2>
+          <ul className="space-y-1.5 sm:space-y-3 text-sm sm:text-xl list-disc pl-5">
             {socials.map((s) => (
               <li key={s.label}>
                 <a
@@ -73,8 +73,8 @@ const Home = () => {
         </div>
 
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">Interests</h2>
-          <ul className="space-y-1.5 sm:space-y-3 text-base sm:text-xl list-disc pl-6">
+          <h2 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-3">Interests</h2>
+          <ul className="space-y-1.5 sm:space-y-3 text-sm sm:text-xl list-disc pl-5">
             {interests.map((i) => (
               <li key={i}>{i}</li>
             ))}
