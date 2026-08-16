@@ -9,29 +9,46 @@ import {
 
 const useActiveSection = (ids: string[]) => {
   const [activeId, setActiveId] = useState<string>(ids[0] ?? "");
+  const key = ids.join(",");
 
   useEffect(() => {
     if (ids.length === 0) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible.length > 0) {
-          setActiveId(visible[0].target.id);
+    // A section is active once its top scrolls above this line (just below
+    // the sticky nav, matching the sections' scroll-mt-24 = 96px offset).
+    const OFFSET = 110;
+
+    const update = () => {
+      const doc = document.documentElement;
+      const atBottom =
+        window.innerHeight + window.scrollY >= doc.scrollHeight - 2;
+      if (atBottom) {
+        setActiveId(ids[ids.length - 1]);
+        return;
+      }
+
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= OFFSET) {
+          current = id;
+        } else {
+          break;
         }
-      },
-      { rootMargin: "-96px 0px -60% 0px", threshold: 0 }
-    );
+      }
+      setActiveId(current);
+    };
 
-    const nodes = ids
-      .map((id) => document.getElementById(id))
-      .filter((n): n is HTMLElement => n !== null);
-    nodes.forEach((n) => observer.observe(n));
-
-    return () => observer.disconnect();
-  }, [ids]);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
 
   return activeId;
 };
