@@ -249,6 +249,23 @@ const Essay = () => {
 
   const minutes = readingTimeMinutes(essay);
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    el.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+    history.replaceState(null, "", `#${id}`);
+  };
+
   return (
     <div className="lg:relative lg:left-1/2 lg:w-[92vw] lg:max-w-5xl lg:-translate-x-1/2">
       <div className="lg:grid lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-12">
@@ -262,6 +279,7 @@ const Essay = () => {
                 <li key={s.id}>
                   <a
                     href={`#${s.id}`}
+                    onClick={(e) => handleNavClick(e, s.id)}
                     className={
                       "text-sm transition-colors " +
                       (activeId === s.id
