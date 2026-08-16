@@ -392,7 +392,7 @@ const Essay = () => {
                     className={
                       "text-sm transition-colors " +
                       (activeId === s.id
-                        ? "font-bold text-primary"
+                        ? "text-primary"
                         : "text-muted-foreground hover:text-foreground")
                     }
                   >
