@@ -31,8 +31,8 @@ const Home = () => {
       </p>
 
       <p className="text-base sm:text-lg leading-relaxed">
-        Right now, I’m trying to understand not only what I want to build, but what I believe is worth building. 
-        I’m drawn to questions around intelligence, progress, human agency, and the role technology should play in our lives. 
+        Right now, I'm trying to understand not only what I want to build, but what I believe is worth building.
+        I'm drawn to questions around intelligence, progress, human agency, and the role technology should play in our lives.
         As I figure out where I want my work to take me, I want to keep questioning the assumptions behind it while staying 
         grounded in my philosophical beliefs and the principles that matter to me.
       </p>
