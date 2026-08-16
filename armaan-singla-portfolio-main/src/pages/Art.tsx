@@ -77,7 +77,7 @@ const Art = () => {
               <img
                 src={open.src}
                 alt={`${open.title} by ${open.artist}`}
-                className="max-h-[80vh] w-full rounded-sm object-contain"
+                className="max-h-[80vh] w-auto max-w-full rounded-sm object-contain"
               />
               <figcaption className="mt-4 text-center">
                 <DialogTitle className="text-xl font-normal italic">
