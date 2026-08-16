@@ -6,7 +6,6 @@ type Experience = {
   role: string;
   period: string;
   description: string;
-  highlight?: boolean;
 };
 
 const current: Experience[] = [
@@ -18,7 +17,7 @@ const current: Experience[] = [
     role: "Software Engineer Intern",
     period: "Summer 2026",
     description:
-      "On the Product Security Office (PSO) team, building fuzzing agents that uncover security vulnerabilities. Also building AI agents that automate the team's workflows and take hours of manual work off their plate.",
+      "On the Product Security Office (PSO) team, building fuzzing agents that uncover security vulnerabilities. Also building AI agents that automate the team's workflows.",
   },
   {
     company: "Ordinum",
@@ -28,7 +27,6 @@ const current: Experience[] = [
     period: "2025 — Present",
     description:
       "AI governance and observability platform for auditing, replaying, and controlling AI decisions in production.",
-    highlight: true,
   },
 ];
 
@@ -86,16 +84,9 @@ const previous: Experience[] = [
 ];
 
 const Entry = ({ exp }: { exp: Experience }) => (
-  <div
-    className={
-      "flex items-start gap-3 sm:gap-4" +
-      (exp.highlight
-        ? " rounded-lg border border-primary/20 bg-primary/5 p-3 sm:p-4 -mx-3 sm:-mx-4"
-        : "")
-    }
-  >
+  <div className="flex items-start gap-4">
     <div className="flex-1">
-      <h3 className="text-base sm:text-lg">
+      <h3 className="text-lg sm:text-2xl">
         <a
           href={exp.href}
           target="_blank"
@@ -111,20 +102,20 @@ const Entry = ({ exp }: { exp: Experience }) => (
           </span>
         )}
       </h3>
-      <p className="text-sm font-bold mt-0.5">
+      <p className="text-base sm:text-lg font-bold mt-0.5">
         {exp.role}{" "}
         <span className="font-normal text-muted-foreground">
           · {exp.period}
         </span>
       </p>
-      <p className="mt-1.5 text-sm sm:text-base leading-snug text-foreground/90">
+      <p className="mt-1.5 sm:mt-2 text-sm sm:text-xl leading-snug sm:leading-relaxed text-foreground/90">
         {exp.description}
       </p>
     </div>
     <img
       src={exp.logo}
       alt={`${exp.company} logo`}
-      className="h-10 w-10 sm:h-12 sm:w-12 shrink-0 rounded-md object-contain"
+      className="h-12 w-12 sm:h-16 sm:w-16 shrink-0 rounded-md object-contain"
     />
   </div>
 );
@@ -134,17 +125,12 @@ const Work = () => {
     <div>
       <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6 sm:mb-8">Work</h1>
 
-      <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Currently</h2>
-      <div className="space-y-4 sm:space-y-5">
+      <div className="space-y-5 sm:space-y-8">
+        <h2 className="text-lg sm:text-2xl font-bold">Currently</h2>
         {current.map((exp) => (
           <Entry key={exp.company} exp={exp} />
         ))}
-      </div>
-
-      <h2 className="text-lg sm:text-xl font-bold mt-6 sm:mt-10 mb-3 sm:mb-4">
-        Previously
-      </h2>
-      <div className="space-y-4 sm:space-y-5">
+        <h2 className="text-lg sm:text-2xl font-bold">Previously</h2>
         {previous.map((exp) => (
           <Entry key={exp.company} exp={exp} />
         ))}
