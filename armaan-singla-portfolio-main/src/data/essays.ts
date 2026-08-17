@@ -38,7 +38,7 @@ export const essays: Essay[] = [
         blocks: [
           {
             type: "p",
-            text: "For 167 years, mathematicians have chipped away at one of the most famous problems in their field. The Riemann Hypothesis, proposed by Bernhard Riemann in 1859, is a short statement with enormous consequences. It is about prime numbers, the building blocks of the whole numbers, and a strange function that seems to encode their hidden structure.",
+            text: "For 167 years, mathematicians have chipped away at one of the most famous problems in their field. The Riemann Hypothesis, proposed by Bernhard Riemann in 1859, is a short statement with enormous consequences. It is about prime numbers, the building blocks of whole numbers, and a strange function that seems to encode their hidden structure.",
           },
           {
             type: "p",
