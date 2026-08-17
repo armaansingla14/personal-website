@@ -5,6 +5,10 @@
     { "source": "/contact", "destination": "/", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/work", "destination": "/work/index.html" },
+    { "source": "/projects", "destination": "/projects/index.html" },
+    { "source": "/writing", "destination": "/writing/index.html" },
+    { "source": "/art", "destination": "/art/index.html" },
     {
       "source": "/writing/riemann-hypothesis",
       "destination": "/writing/riemann-hypothesis/index.html"
