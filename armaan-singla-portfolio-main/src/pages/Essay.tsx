@@ -93,7 +93,9 @@ const ParagraphText = ({ text }: { text: string }) => {
     <>
       {parts.map((part, i) =>
         i % 2 === 1 ? (
-          <sup key={i} className="text-xs">
+          // parts[i-1] === "" means this citation directly follows another one
+          // (e.g. "[^2][^3]"); nudge it right so "2" and "3" don't read as "23".
+          <sup key={i} className={"text-xs" + (parts[i - 1] === "" ? " ml-1" : "")}>
             <a href={`#source-${part}`} className="text-primary">
               {part}
             </a>
