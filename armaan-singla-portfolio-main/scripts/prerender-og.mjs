@@ -53,6 +53,27 @@ const PAGES = [
       "A gallery of paintings, engravings, and photographs Armaan Singla keeps coming back to.",
   },
   {
+    path: "/writing/voice-ai-bottleneck",
+    title:
+      "AI's Next Bottleneck Isn't Intelligence. It's How Fast You Can Talk to It. | Armaan Singla",
+    description:
+      "Why real-time voice and multimodal communication, not raw model intelligence, is becoming AI's next critical bottleneck, from military task guidance and surgical robotics to humanoid robots and physical AI.",
+    type: "article",
+    image: `${SITE_URL}/og/og-voice.png`,
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline:
+        "AI's Next Bottleneck Isn't Intelligence. It's How Fast You Can Talk to It.",
+      description:
+        "Why real-time voice and multimodal communication, not raw model intelligence, is becoming AI's next critical bottleneck, from military task guidance and surgical robotics to humanoid robots and physical AI.",
+      author: { "@type": "Person", name: "Armaan Singla", url: SITE_URL },
+      datePublished: "2026-09-04",
+      image: `${SITE_URL}/og/og-voice.png`,
+      mainEntityOfPage: `${SITE_URL}/writing/voice-ai-bottleneck`,
+    },
+  },
+  {
     path: "/writing/riemann-hypothesis",
     title:
       "If AI Solves the Riemann Hypothesis, Will Humans Understand the Answer? | Armaan Singla",

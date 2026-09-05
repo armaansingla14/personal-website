@@ -13,6 +13,10 @@
       "source": "/writing/riemann-hypothesis",
       "destination": "/writing/riemann-hypothesis/index.html"
     },
+    {
+      "source": "/writing/voice-ai-bottleneck",
+      "destination": "/writing/voice-ai-bottleneck/index.html"
+    },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

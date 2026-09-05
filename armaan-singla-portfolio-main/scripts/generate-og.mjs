@@ -85,6 +85,19 @@ inner += textEl(MARGIN, afterTitleY + 112, 34, 400, MUTED, "Armaan Singla");
 inner += textEl(MARGIN, 560, 30, 400, CRIMSON, "armaansingla.me");
 const riemannSvg = frame(inner);
 
+const voiceTitle =
+  "AI's Next Bottleneck Isn't Intelligence. It's How Fast You Can Talk to It.";
+const voiceTitleLines = wrap(voiceTitle, titleSize, W - MARGIN * 2);
+let voiceInner = "";
+voiceTitleLines.forEach((ln, i) => {
+  voiceInner += textEl(MARGIN, titleTop + i * titleLineH, titleSize, 700, INK, ln);
+});
+const afterVoiceTitleY = titleTop + (voiceTitleLines.length - 1) * titleLineH;
+voiceInner += `<rect x="${MARGIN + 2}" y="${afterVoiceTitleY + 34}" width="104" height="5" fill="${CRIMSON}"/>`;
+voiceInner += textEl(MARGIN, afterVoiceTitleY + 112, 34, 400, MUTED, "Armaan Singla");
+voiceInner += textEl(MARGIN, 560, 30, 400, CRIMSON, "armaansingla.me");
+const voiceSvg = frame(voiceInner);
+
 const render = (svg, file) => {
   const resvg = new Resvg(svg, {
     fitTo: { mode: "width", value: W },
@@ -102,3 +115,4 @@ const render = (svg, file) => {
 fs.mkdirSync(OUT_DIR, { recursive: true });
 render(defaultSvg, "og-default.png");
 render(riemannSvg, "og-riemann.png");
+render(voiceSvg, "og-voice.png");

@@ -15,6 +15,7 @@ const SITE_URL = "https://www.armaansingla.me";
 // Per-essay social image; falls back to the site default when unmapped.
 const ESSAY_OG_IMAGE: Record<string, string> = {
   "riemann-hypothesis": `${SITE_URL}/og/og-riemann.png`,
+  "voice-ai-bottleneck": `${SITE_URL}/og/og-voice.png`,
 };
 
 // Offset (px from the viewport top) at which a heading counts as "reached".
@@ -232,10 +233,175 @@ const DiscoveryTreeDiagram = () => (
   </div>
 );
 
+const Bar = ({
+  label,
+  display,
+  widthPct,
+  accent = false,
+}: {
+  label: string;
+  display: string;
+  widthPct: number;
+  accent?: boolean;
+}) => (
+  <div>
+    <div className="mb-1 flex items-baseline justify-between gap-3 text-sm">
+      <span className="text-foreground/90">{label}</span>
+      <span
+        className={
+          "shrink-0 font-bold " + (accent ? "text-primary" : "text-foreground")
+        }
+      >
+        {display}
+      </span>
+    </div>
+    <div className="h-3 w-full rounded-full bg-muted">
+      <div
+        className={"h-3 rounded-full " + (accent ? "bg-primary" : "bg-foreground/40")}
+        style={{ width: `${widthPct}%` }}
+      />
+    </div>
+  </div>
+);
+
+const WpmBarDiagram = () => (
+  <div className="mx-auto w-full max-w-sm space-y-4">
+    <Bar label="Typing (smartphone)" display="52 wpm" widthPct={34} />
+    <Bar label="Speech" display="153 wpm" widthPct={100} accent />
+  </div>
+);
+
+// Bar widths are on a log scale (log10 of milliseconds, normalized between the
+// fastest and slowest value) since the raw range spans 200ms to 5.4s.
+const LatencyBarsDiagram = () => (
+  <div className="mx-auto w-full max-w-sm space-y-4">
+    <Bar label="Human conversational turn-taking" display="~0–200 ms" widthPct={4} />
+    <Bar label="GPT-4o (reported minimum)" display="232 ms" widthPct={5} accent />
+    <Bar label="GPT-4o (reported average)" display="320 ms" widthPct={14} accent />
+    <Bar label="GPT-3.5 Voice Mode" display="2.8 s" widthPct={80} />
+    <Bar label="GPT-4 Voice Mode" display="5.4 s" widthPct={100} />
+  </div>
+);
+
+const DecisionLoopDiagram = () => (
+  <div className="flex flex-col items-center gap-2">
+    <TreeNode>Observe</TreeNode>
+    <span className="text-muted-foreground">↓</span>
+    <TreeNode>Understand</TreeNode>
+    <span className="text-muted-foreground">↓</span>
+    <TreeNode accent>Ask / Communicate</TreeNode>
+    <span className="text-primary">↓</span>
+    <TreeNode accent>AI reasons</TreeNode>
+    <span className="text-primary">↓</span>
+    <TreeNode accent>Feedback</TreeNode>
+    <span className="text-muted-foreground">↓</span>
+    <TreeNode>Act</TreeNode>
+    <p className="mt-1 max-w-[16rem] text-center text-xs text-muted-foreground">
+      The interface consumes part of the decision window.
+    </p>
+  </div>
+);
+
+const FlowColumn = ({
+  title,
+  steps,
+  accent = false,
+}: {
+  title: string;
+  steps: string[];
+  accent?: boolean;
+}) => (
+  <div className="rounded-md border border-border/60 bg-muted/30 p-3">
+    <p className="mb-2 text-center text-xs font-bold uppercase tracking-wide text-muted-foreground">
+      {title}
+    </p>
+    <div className="flex flex-col items-center gap-1.5">
+      {steps.map((step, i) => (
+        <div key={step} className="flex flex-col items-center gap-1.5">
+          {i > 0 && <span className="text-muted-foreground">↓</span>}
+          <TreeNode accent={accent && i === steps.length - 1}>{step}</TreeNode>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const CommandVsConversationDiagram = () => (
+  <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+    <FlowColumn
+      title="Traditional voice command"
+      steps={["Human thought", "Remember exact keyword", "Speak command", "System function"]}
+    />
+    <FlowColumn
+      title="LLM conversation"
+      steps={["Human thought", "Speak naturally", "Model interprets intent", "System function(s)"]}
+      accent
+    />
+  </div>
+);
+
+const CascadeVsMultimodalDiagram = () => (
+  <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+    <FlowColumn
+      title="Legacy cascade"
+      steps={["Voice", "Speech-to-text", "Text LLM", "Text response", "Text-to-speech", "Voice"]}
+    />
+    <FlowColumn
+      title="Native multimodal"
+      steps={["Voice + vision + sensors + context", "Multimodal model", "Voice + action"]}
+      accent
+    />
+  </div>
+);
+
+const StageBox = ({
+  title,
+  items,
+  accent = false,
+}: {
+  title: string;
+  items?: string[];
+  accent?: boolean;
+}) => (
+  <div
+    className={
+      "rounded-md border px-4 py-2.5 text-center " +
+      (accent ? "border-primary" : "border-border")
+    }
+  >
+    <div className={"text-sm font-bold " + (accent ? "text-primary" : "text-foreground")}>
+      {title}
+    </div>
+    {items && items.length > 0 && (
+      <div className="mt-1 text-xs text-muted-foreground">{items.join(" · ")}</div>
+    )}
+  </div>
+);
+
+const HumanoidLoopDiagram = () => (
+  <div className="flex flex-col items-center gap-2">
+    <StageBox title="Human" items={["speech", "gesture", "gaze", "context"]} />
+    <span className="text-muted-foreground">↓</span>
+    <StageBox
+      title="Robot / physical AI"
+      items={["perception", "reasoning", "action", "feedback"]}
+      accent
+    />
+    <span className="text-muted-foreground">↓</span>
+    <StageBox title="Shared physical task" />
+  </div>
+);
+
 const EssayDiagram = ({ variant }: { variant: string }) => {
   if (variant === "critical-strip") return <CriticalStripDiagram />;
   if (variant === "progression") return <ProgressionDiagram />;
   if (variant === "discovery-tree") return <DiscoveryTreeDiagram />;
+  if (variant === "wpm-bar") return <WpmBarDiagram />;
+  if (variant === "latency-bars") return <LatencyBarsDiagram />;
+  if (variant === "decision-loop") return <DecisionLoopDiagram />;
+  if (variant === "command-vs-conversation") return <CommandVsConversationDiagram />;
+  if (variant === "cascade-vs-multimodal") return <CascadeVsMultimodalDiagram />;
+  if (variant === "humanoid-loop") return <HumanoidLoopDiagram />;
   return null;
 };
 
@@ -327,7 +493,7 @@ const Essay = () => {
     headline: essay.title,
     description: essay.description,
     author: { "@type": "Person", name: "Armaan Singla", url: SITE_URL },
-    datePublished: "2026-08-15",
+    datePublished: essay.isoDate,
     image: essayImage,
     mainEntityOfPage: `${SITE_URL}${essayPath}`,
   };
