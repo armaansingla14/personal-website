@@ -53,27 +53,19 @@ export const essays: Essay[] = [
           },
           {
             type: "p",
-            text: "None of that is really about superpowers. What stuck with me was the interface. Peter isn't opening a laptop mid-fight. He isn't typing a prompt or tapping through an app. He's thinking, speaking, moving, and getting information back while the situation is still unfolding.",
+            text: "None of that is really about superpowers. The part that stuck with me was the interface. Peter isn't opening a laptop mid-fight or typing a prompt into an app. He's thinking, speaking, moving, and getting information back while the situation is still unfolding.",
           },
           {
             type: "p",
-            text: "That's a strange contrast with how most of us actually use AI today.",
+            text: "That's a weird contrast with how most of us actually use AI. We have models that can write software, reason through hard problems, read images, and increasingly handle audio and video. But reaching any of that still usually starts with the same act we've used for decades: sit down and type.",
           },
           {
             type: "p",
-            text: "We now have models that can write software, reason through hard problems, read images, search enormous amounts of information, and increasingly understand audio and video. But accessing any of that intelligence still usually starts with the same physical act we've used for decades: sit down, and type.",
+            text: "I don't think keyboards are going away. They're still better for code, precision, privacy, and plenty of other things. But I keep coming back to a second bottleneck that shows up as models get better: how fast a person can actually reach that intelligence at the moment they need it. In everyday life a few seconds of friction is nothing. In surgery, emergency response, aviation, or the military, a few seconds can be the whole problem.",
           },
           {
             type: "p",
-            text: "I don't think keyboards are going away. They're still better for programming, precision, privacy, and a long list of other tasks. But something else is changing underneath that. As models get more capable, a second bottleneck starts to matter just as much as the intelligence itself: how quickly a person can reach that intelligence at the exact moment they need it.",
-          },
-          {
-            type: "p",
-            text: "In ordinary life, a few seconds of friction barely registers. In surgery, industrial work, emergency response, aviation, or the military, a few seconds can be the entire problem.",
-          },
-          {
-            type: "p",
-            text: "My argument is simple, maybe even a little obvious once you say it out loud. The next important layer of AI probably won't be a smarter model. It'll be real-time communication that can keep up with human thought. Not because intelligence stops mattering. Intelligence is only useful if it reaches us before the moment it was needed for is already gone.",
+            text: "So here's my argument, and I could be wrong about parts of it. The next big layer of AI probably isn't a smarter model. I think it's real-time communication that can keep up with human thought. Intelligence only helps if it reaches you before the moment it was needed for is gone.",
           },
         ],
       },
@@ -83,24 +75,23 @@ export const essays: Essay[] = [
         blocks: [
           {
             type: "p",
-            text: "Humans didn't evolve to communicate through keyboards. We speak. We do it when we're excited, confused, giving instructions, teaching, arguing, or just working out an idea out loud. Even talking to a dog that can't understand a word of it, our first instinct is still to use our voice.",
+            text: "We didn't evolve to communicate through keyboards. We speak. We do it when we're excited, confused, explaining something, arguing, or just working an idea out loud. Even talking to a dog that has no clue what we're saying, our first instinct is still our voice.",
           },
           {
             type: "p",
-            text: "Typing is different. It's something we learned because computers needed a structured way to receive input. That doesn't make it bad. It just makes it an interface built around the machine, where speech is one built around us.",
+            text: "Typing is something we learned because computers needed a structured way to take input. That doesn't make it bad. It just makes it an interface built around the machine, and speech is one built around us.",
           },
           {
             type: "p",
-            text: "There's a measurable gap, too. A Stanford and Baidu study comparing speech recognition against smartphone typing found English speech input reached about 153 words per minute, against roughly 52 words per minute for typing. That made speech about 2.9 times faster, with a lower error rate than the mobile keyboard.[^6] That's one experiment, comparing speech against a phone keyboard rather than every possible input method, but the gap is still worth sitting with.",
-          },
-          { type: "p", text: "153 words per minute versus 52." },
-          {
-            type: "p",
-            text: "But the bigger difference isn't the number. It's flow. When I type an idea, I keep interrupting myself, fixing a word, deleting a clause, losing half the thought because my fingers are slower than whatever I was trying to say. When I speak, the thought can come out messy. I can pause, stumble, correct myself mid-sentence, say \"no, that's not what I mean,\" and try again.",
+            text: "There's a measurable gap too. A Stanford and Baidu study comparing speech recognition against smartphone typing found English speech input hit about 153 words per minute against roughly 52 for typing, so about 2.9 times faster, and with a lower error rate than the phone keyboard.[^6] It's one study, and it's speech against a phone rather than every input method, but the gap is big enough to sit with.",
           },
           {
             type: "p",
-            text: "A genuinely conversational AI shouldn't need me to translate that messy thought into a clean prompt before it starts working. It should be able to work with the thought while I'm still forming it. That's a very different relationship with a computer than the one most interfaces give us today.",
+            text: "Honestly the number isn't the interesting part to me. Flow is. When I type an idea I keep interrupting myself, fixing a word, deleting half a sentence, losing the thought because my fingers are slower than my head. When I talk, the thought can come out messy and that's fine. I can pause, stumble, correct myself, say no that's not what I meant, and keep going. A genuinely conversational AI shouldn't need me to clean that up into a tidy prompt before it starts working. It should be able to work with the thought while I'm still forming it.",
+          },
+          {
+            type: "p",
+            text: "I want to be careful not to oversell this, though. Speech isn't always better. Half the time I'd rather type: when I need the exact wording, when I'm somewhere quiet or packed with people, when the thing I'm describing is precise enough that saying it out loud would be slower and clumsier than just writing it. Dictating code sounds miserable. And there's the privacy thing, I don't want to say my messages out loud on a train. So I don't actually think voice wins everywhere. It's more that for a specific and growing set of situations, typing is the wrong tool and we're still defaulting to it.",
           },
           {
             type: "diagram",
@@ -116,27 +107,27 @@ export const essays: Essay[] = [
         blocks: [
           {
             type: "p",
-            text: "Conversation feels instant because humans are extraordinarily good at timing it. We don't wait several seconds after someone finishes speaking before responding.",
+            text: "Conversation feels instant, but that's because humans are ridiculously good at timing it. We don't sit there for two seconds after someone stops talking before we answer.",
           },
           {
             type: "p",
-            text: "A cross-linguistic study of turn-taking across ten languages found that response timing clustered tightly around the end of the previous turn, with a large share of transitions landing between 0 and 200 milliseconds.[^7] That means before the other person has even finished their sentence, our brain is already predicting where it's going, deciding what it means, and preparing a reply.",
+            text: "A cross-linguistic study of turn-taking across ten languages found response timing clustered tightly around the end of the previous turn, with a lot of transitions landing between 0 and 200 milliseconds.[^7] Before the other person has even finished their sentence, your brain is already guessing where it's going and getting a reply ready.",
           },
           {
             type: "p",
-            text: "So why does latency matter this much? Because a system can give the exact right answer and still feel unintelligent if the rhythm around it is wrong. Think about a laggy phone call: nobody on it suddenly got less intelligent, the conversation just turns awkward. People talk over each other, both stop, someone says \"sorry, go ahead.\" The information is fine. The timing is broken.",
+            text: "That timing is why latency matters so much in voice AI. A system can have the exact right answer and still feel dumb if the rhythm is off. It's like a laggy phone call. Nobody on it got less intelligent, the conversation just falls apart. People talk over each other, both stop, someone goes sorry, you go. The information is fine. The timing is broken.",
           },
           {
             type: "p",
-            text: "Older voice assistants often behaved like a pipeline: you speak, the system waits, your speech becomes text, a model processes the text, another system turns the reply back into audio, and only then do you hear anything. Every stage adds delay.",
+            text: "Older voice assistants basically ran as a pipeline. You speak, it waits, your audio becomes text, a model reads the text, another system turns the reply back into audio, and only then do you hear something. Every stage adds delay.",
           },
           {
             type: "p",
-            text: "OpenAI's own numbers show how much architecture matters here. Its earlier Voice Mode averaged about 2.8 seconds with GPT-3.5 and 5.4 seconds with GPT-4, because speech passed through separate transcription, language-model, and text-to-speech systems.[^9] GPT-4o, trained across audio, vision, and text in a single model, brought that down to a reported 232 milliseconds at best and 320 milliseconds on average.[^9][^10]",
+            text: "OpenAI's own numbers show how much the architecture matters. Their earlier Voice Mode averaged about 2.8 seconds with GPT-3.5 and 5.4 seconds with GPT-4, because the audio went through separate transcription, language, and text-to-speech systems.[^9] GPT-4o, trained across audio, vision, and text as one model, got that down to a reported 232 milliseconds at best and 320 on average.[^9][^10]",
           },
           {
             type: "p",
-            text: "That doesn't mean the voice problem is solved. It means we crossed a real threshold: from waiting seconds for a pipeline to respond, to landing inside the timing range of an actual human conversation.",
+            text: "That doesn't mean voice is solved. It means we crossed a threshold: from waiting seconds for a pipeline, to landing inside the timing range of an actual human conversation.",
           },
           {
             type: "diagram",
@@ -152,23 +143,27 @@ export const essays: Essay[] = [
         blocks: [
           {
             type: "p",
-            text: "Some environments don't leave room for friction. That's where voice stops being a nice-to-have and starts being something closer to necessary.",
+            text: "Some environments just don't leave room for friction. That's where voice stops being a nice feature and starts being closer to necessary.",
           },
           {
             type: "p",
-            text: "Picture a soldier moving through an environment where their hands, eyes, and attention are already spoken for. Radios, maps, sensors, other people, and command systems are all competing for the same channel. Typing works fine in an office. It's a very different problem when someone is moving, carrying equipment, operating a vehicle, or reacting to something happening in real time.",
+            text: "Here's the way I've started thinking about it. AI doesn't improve a decision by being smart in the abstract. It improves a decision by getting the right information into the person's head while they can still act on it. Every real decision runs on a loop: notice something, make sense of it, decide, act. If the AI's insight lands after that loop has already closed, it didn't help, no matter how good it was. So the interface isn't some detail sitting next to the intelligence. It's part of whether the intelligence counts at all.",
           },
           {
             type: "p",
-            text: "The U.S. military is already building around this exact problem. DARPA's Perceptually-enabled Task Guidance program is built on an AI assistant that can see what a user sees, hear what they hear, and give just-in-time visual and audio guidance while the person is mid-task. DARPA specifically points to mechanics and medics, using head-mounted cameras and microphones to understand the task, catch mistakes, and hold a task-focused dialogue with the person doing the work.[^15]",
+            text: "Picture a soldier whose hands, eyes, and attention are already fully spoken for. Radios, maps, sensors, other people, the vehicle, all fighting for the same attention. That's a cognitive load problem before it's anything else. Every extra thing you have to read or type is attention pulled off the actual situation, and situational awareness is the first thing to go when you're overloaded. An interface that makes you stop and operate it is competing with the thing you're supposed to be watching.",
           },
           {
             type: "p",
-            text: "The Army has gone further. A 2025 Army small-business research topic explicitly asked for systems that let combat-vehicle crews issue natural-language commands to autonomous systems, describing crews juggling navigation, sensors, communications, and situational awareness at once, with the stated goal of cutting cognitive load and supporting faster decisions through natural language.[^17] It's a little wild that \"just talk to the vehicle\" went from science fiction to something the Army is actively funding.",
+            text: "The U.S. military is already building for this. DARPA's Perceptually-enabled Task Guidance program is built around an assistant that sees what the user sees, hears what they hear, and gives just-in-time guidance mid-task. DARPA points specifically at mechanics and medics, using head-mounted cameras and mics to follow the task, catch mistakes, and actually hold a task-focused conversation with the person doing the work.[^15]",
           },
           {
             type: "p",
-            text: "The military makes this argument easy to see because the environment is extreme, but the principle isn't military-specific. If your hands are occupied and your attention is scarce, any interface that requires you to stop what you're doing is expensive. The cost might be two seconds. It might be ten. But the entire value of real-time intelligence is that it lives inside the decision window. Information that arrives after the decision is just history.",
+            text: "The Army has gone further. A 2025 Army research topic asked for systems that let combat-vehicle crews give natural-language commands to autonomous systems, describing crews juggling navigation, sensors, comms, and awareness all at once, with the goal of cutting cognitive load and making decisions faster through natural language.[^17] That's basically human-machine teaming: the human sets the intent, the machine handles execution, and the whole thing only works if talking to the machine is faster than doing it yourself. It's a little wild that \"just talk to the vehicle\" went from science fiction to an actual funded research topic.",
+          },
+          {
+            type: "p",
+            text: "The military makes this obvious because the environment is extreme, but the logic isn't military-specific. If your hands are busy and your attention is scarce, any interface that makes you stop is expensive. Might be two seconds, might be ten. The value of real-time intelligence is that it lives inside the decision window. Information that shows up after the decision is just history.",
           },
           {
             type: "diagram",
@@ -184,19 +179,19 @@ export const essays: Essay[] = [
         blocks: [
           {
             type: "p",
-            text: "Now swap the battlefield for an operating room, and the same interface problem is waiting there too. A surgeon's hands are occupied, and their attention is already split across anatomy, imaging, instruments, the rest of the room, and the procedure itself. An AI system with genuinely useful information is still competing with the work if reaching it means pulling attention off the patient to navigate a menu.",
+            text: "The operating room has the same problem, just quieter. A surgeon's hands are busy and their attention is already split across anatomy, imaging, instruments, the room, and the procedure. Useful information from an AI still loses if getting to it means looking away from the patient to work a menu.",
           },
           {
             type: "p",
-            text: "Researchers are already testing a different model. A 2024 study introduced an LLM-based voice interface for an augmented-reality surgical navigation system used in pancreatic surgery, tested with nine experienced surgeons. That's a small group, small enough that I wouldn't read it as proof the problem is solved, but the results are still notable.[^19]",
+            text: "There's real evidence here, not just speculation. A 2024 study built an LLM-based voice interface for an augmented-reality surgical navigation system used in pancreatic surgery and tested it with nine experienced surgeons. Nine is a small sample, so I wouldn't call anything settled, but the results are worth looking at.[^19]",
           },
           {
             type: "p",
-            text: "The LLM-based interface produced significantly lower task-completion times across all six tested tasks, significantly lower overall cognitive workload, and a System Usability Scale score of 87.78, rated \"excellent\" by the researchers, against 79.17 for a conventional predefined-command system. The researchers then tested both approaches during two real pancreatic surgeries.[^19]",
+            text: "The LLM interface had significantly lower task-completion times across all six tested tasks, lower overall cognitive workload, and a System Usability Scale score of 87.78, which the researchers rated excellent, against 79.17 for a conventional predefined-command system. They then tried both during two real pancreatic surgeries.[^19]",
           },
           {
             type: "p",
-            text: "The interesting part wasn't that voice worked. Predefined voice commands already existed in that system. What changed was the natural language. With a conventional command system, the surgeon has to remember the exact phrase that triggers a function. With an LLM, the surgeon can just describe what they want. That sounds minor, but it flips who has to do the adapting: one approach forces the human to learn the machine's language, the other asks the machine to understand the human's. That's the direction I think computing has to keep moving.",
+            text: "Voice itself wasn't the new part. That system already had predefined voice commands. What changed was natural language. With the old command system the surgeon has to remember the exact phrase that fires a function. With the LLM they just say what they want. That sounds small but it flips who does the adapting. One approach forces the human to learn the machine's language. The other asks the machine to understand the human. That's the direction I think computing has to keep going.",
           },
           {
             type: "diagram",
@@ -212,23 +207,19 @@ export const essays: Essay[] = [
         blocks: [
           {
             type: "p",
-            text: "There's an obvious pushback here: we already have Siri, Alexa, and years of phone dictation. Why is this still a frontier?",
+            text: "Someone will point out that we already have Siri, Alexa, and years of phone dictation, so why is any of this a frontier.",
           },
           {
             type: "p",
-            text: "Because transcription isn't the same thing as conversation. Speech recognition genuinely has improved a huge amount. Back in 2017 Microsoft reported a 5.1% word error rate on the Switchboard conversational speech benchmark, matching the human transcription error rate on that same test.[^11] That was a real milestone, and Microsoft's own researchers were careful to flag what was left: distant microphones, background noise, accents, different speaking styles, and languages with less training data.",
+            text: "Because transcription isn't the same as conversation. Recognition has gotten genuinely good. Back in 2017 Microsoft reported a 5.1% word error rate on the Switchboard conversational benchmark, matching human transcribers on that test.[^11] Real milestone. But Microsoft's own researchers were careful about what was left: far-away microphones, background noise, accents, different speaking styles, and languages without much training data.",
           },
           {
             type: "p",
-            text: "A benchmark can claim human parity while the real world still feels very different. A 2020 Stanford-led study tested commercial speech recognition systems from Amazon, Apple, Google, IBM, and Microsoft against conversational recordings and found an average word error rate of 35% for Black speakers in the dataset, against 19% for white speakers.[^12] Separate work on dysfluent speech found a consumer speech-recognition system performed substantially worse for people with stuttering and similar fluency disorders.[^14]",
+            text: "A benchmark can hit human parity while the real world still feels nothing like it. A 2020 Stanford-led study tested commercial systems from Amazon, Apple, Google, IBM, and Microsoft on conversational recordings and found an average word error rate of 35% for Black speakers against 19% for white speakers.[^12] Other work on dysfluent speech found a consumer system did substantially worse for people who stutter.[^14]",
           },
           {
             type: "p",
-            text: "Real conversation is messy in ways a demo rarely is. People mumble, interrupt, speak over machines, panic, whisper, stutter, change their sentence halfway through. A soldier isn't going to talk to an AI in a quiet recording studio. Neither is a mechanic under a vehicle, or a surgeon mid-procedure.",
-          },
-          {
-            type: "p",
-            text: "If voice is going to become a serious interface for real-world AI, the bar can't be \"it understands me most of the time when I speak clearly.\" It has to become something closer to: it understands what I meant, in my environment, while everything else is happening. That's a much harder engineering problem than a benchmark score suggests.",
+            text: "Real speech is messy in ways a demo never is. People mumble, interrupt, talk over the machine, whisper, panic, stutter, change the sentence halfway through. A soldier isn't in a quiet recording studio. Neither is a mechanic under a vehicle or a surgeon mid-procedure. So the bar can't be understands me when I speak clearly. It has to be closer to understands what I meant, in my environment, while everything else is happening. That's a much harder problem than a benchmark score makes it look.",
           },
         ],
       },
@@ -238,15 +229,19 @@ export const essays: Essay[] = [
         blocks: [
           {
             type: "p",
-            text: "When people say \"voice AI,\" they usually compress several distinct engineering problems into one phrase. A real system has to know when I've finished speaking versus just pausing to think. It has to let me interrupt it. It has to separate my voice from someone else's, and my voice from background noise. It has to remember what I said thirty seconds ago. It may need to combine my speech with a camera feed, sensor data, a map, or a technical manual, and then reason quickly enough that the answer still matters by the time it arrives.",
+            text: "When people say \"voice AI\" they're squashing a bunch of separate engineering problems into two words, and once you look at them individually it stops sounding easy. The system has to figure out when I've actually stopped talking versus just paused to think. The naive version of that is voice activity detection, which only checks whether there's sound. That's not enough, because I pause mid-sentence constantly. What you really want is semantic endpointing, where the model uses the meaning of what I'm saying to guess whether I'm done, plus turn detection on top to decide whose turn it is to talk. Get this wrong and the assistant either cuts me off or sits there waiting after I've clearly finished.",
           },
           {
             type: "p",
-            text: "There are two broad ways to build that. The older approach is a cascade: speech becomes text, a language model processes the text, and text becomes speech again. It's useful because each piece can be optimized on its own, but every handoff is a place to lose something. Tone can disappear when audio becomes text, background context can vanish, timing information gets stripped out, and every conversion adds latency.",
+            text: "It also has to let me interrupt it. If I start talking while it's still speaking, it should stop and listen, which is called barge-in, and it's harder than it sounds because the system has to tell my voice apart from its own audio coming out of the speaker. And it can't wait until I finish to start thinking. Good systems run streaming inference, processing my words as they arrive instead of waiting for the whole sentence, which is a big part of why modern voice models feel quick. The number that actually matters here is perceived latency, not raw model latency. If it starts responding fast, or even just gives a small acknowledgement, it feels instant even when the full answer takes longer. A slower model that starts sooner can feel faster than a quicker one that stays silent and then dumps the whole reply at once.",
           },
           {
             type: "p",
-            text: "The newer direction is native multimodality: audio, vision, and context go into one model, which reasons over more of the original signal directly and comes back out as speech and action. That matters for physical AI in particular, because the world doesn't arrive as text. It arrives as sound, motion, space, and time, and something is always lost translating it into a paragraph first.",
+            text: "Then there's how you wire it together. The old approach is a cascade: audio to text, text into a language model, text back to audio. It's convenient because you can optimize each piece on its own, but every handoff loses something. Tone disappears when audio becomes text, background context vanishes, timing gets stripped out, and each conversion adds delay.",
+          },
+          {
+            type: "p",
+            text: "The newer direction is native multimodality: audio, vision, and context go into one model that reasons over the raw signal and comes back out as speech or action. The multimodal context part matters more than it sounds. The model isn't just hearing words, it has the tone, the background, what the camera sees, and what happened ten seconds ago, all at once. That's a big deal for physical AI, because the world doesn't show up as text. It shows up as sound, motion, space, and time, and you lose some of it the moment you flatten it into a paragraph.",
           },
           {
             type: "diagram",
@@ -262,19 +257,19 @@ export const essays: Essay[] = [
         blocks: [
           {
             type: "p",
-            text: "A large share of the AI industry is now moving toward physical AI: robots, autonomous vehicles, humanoids, industrial systems that can see the world, reason about it, and act inside it. NVIDIA has been explicit that it sees this as a major frontier, building world models, simulation systems, and robotics foundation models around it.[^20]",
+            text: "A big chunk of the AI industry is moving toward physical AI now: robots, autonomous vehicles, humanoids, industrial systems that can see, reason, and act in the world. NVIDIA has been loud about treating this as a major frontier, building world models, simulators, and robotics foundation models around it.[^20]",
           },
           {
             type: "p",
-            text: "That raises a question I think gets less attention than it deserves: how are humans actually supposed to talk to all of these machines? A humanoid robot can have perfect balance, strong vision, dexterous hands, and a genuinely capable reasoning model underneath it, but if I still have to pull out a phone and type every instruction into an app, something about the idea has failed. A human-shaped machine shouldn't require a less human way of talking to it.",
+            text: "And I don't hear many people asking the obvious follow-up: how are humans actually supposed to talk to all of these machines? A humanoid can have great balance, good vision, dexterous hands, and a capable model inside it, but if I still have to pull out my phone and type instructions into an app, something about the whole premise has failed. A human-shaped machine shouldn't need a less human way of talking to it.",
           },
           {
             type: "p",
-            text: "If a robot is standing next to me, I want to be able to say: \"Can you move that box over there? Actually, not that one, the heavier one beside it. Put it near the door.\" The robot has to track the object I mean, the word \"there,\" my correction, the visual scene, the task history, and the fact that I changed my mind halfway through a sentence. That's an ordinary conversation for two people. For a machine, it's a genuinely hard multimodal reasoning problem.",
+            text: "If a robot is standing next to me, I want to just say, can you move that box over there, no not that one, the heavier one next to it, put it by the door. The robot has to track which object I mean, what \"there\" refers to, my correction, the scene in front of it, the task so far, and the fact that I changed my mind mid-sentence. For two people that's a totally ordinary exchange. For a machine it's a genuinely hard multimodal reasoning problem.",
           },
           {
             type: "p",
-            text: "This is why I don't think physical AI and conversational AI stay separate for long. A robot needs a body to act in the world, but it also needs a communication layer that lets it join human activity without forcing the human to become its operator.",
+            text: "I don't think physical AI and conversational AI stay separate for long. A robot needs a body to act, but it also needs a way to talk with people that doesn't turn every human nearby into its operator.",
           },
           {
             type: "diagram",
@@ -290,15 +285,11 @@ export const essays: Essay[] = [
         blocks: [
           {
             type: "p",
-            text: "I don't think the future has no keyboards. That claim is easy to make and probably wrong. I still want a keyboard when I'm writing code, text when I need to check exact wording, a screen when information is visual, and silence when talking would just be annoying.",
+            text: "So to be clear, I'm not predicting the death of the keyboard. I already said I reach for one constantly, and that's kind of the point. The future interface is probably just multimodal by default: voice when voice is best, text when text is best, vision when vision is best, touch when touch is best. The keyboard doesn't disappear in that world. It just stops being the one gate everything has to pass through to reach the intelligence.",
           },
           {
             type: "p",
-            text: "The future interface is probably multimodal by default: voice when voice is best, vision when vision is best, text when text is best, touch when touch is best. The deeper change isn't the death of the keyboard. It's that the keyboard stops being the gatekeeper to intelligence.",
-          },
-          {
-            type: "p",
-            text: "For most of computing history, humans have adapted to computers, not the other way around. We learned command lines, programming languages, keyboard shortcuts, menus, and where the settings page lives. Each new interface removed a layer of that friction: the mouse made spatial interaction easier, touchscreens let us manipulate objects directly. Voice has the potential to remove another layer, but only once it's reliable enough that we stop thinking about it as an interface at all.",
+            text: "For most of computing history we adapted to the machine, not the other way around. We learned command lines, programming languages, keyboard shortcuts, menus, where the settings live. Each new interface peeled off a layer of that: the mouse made space easier, touchscreens let us grab things directly. Voice could peel off another layer, but only once it's reliable enough that we stop thinking of it as an interface at all.",
           },
         ],
       },
@@ -308,23 +299,19 @@ export const essays: Essay[] = [
         blocks: [
           {
             type: "p",
-            text: "I started thinking about all of this because of a movie. A fictional teenager running through a fight while talking to an AI in his ear is obviously fiction. The idea underneath it isn't.",
+            text: "I started on all this because of a movie, which I'm aware is a ridiculous place to start. A teenager sprinting through a fight while talking to an AI in his ear is obviously fiction. The thing underneath it isn't.",
           },
           {
             type: "p",
-            text: "DARPA is researching assistants that see and hear what soldiers see and hear. The Army is funding natural-language interfaces for autonomous vehicles. Researchers are testing LLM voice interfaces inside real operating rooms. Multimodal models can already respond at something close to normal conversational timing under the right conditions. Physical AI is moving out of research labs and into robots, vehicles, factories, and medical systems. All of it points at the same shift: intelligence is leaving the screen.",
+            text: "DARPA is researching assistants that see and hear what soldiers see and hear. The Army is funding natural-language control for autonomous vehicles. Researchers are putting LLM voice interfaces into real operating rooms. Multimodal models can already answer at close to conversational speed under the right conditions. Physical AI is leaving the lab and showing up in robots, vehicles, factories, and hospitals. It all points the same way: intelligence is leaving the screen.",
           },
           {
             type: "p",
-            text: "Once that happens, our current interface assumptions start to break. The person using AI may not be sitting at a desk. They may be moving, repairing something, operating, driving, treating someone, in an environment where their hands and eyes already have jobs. In those moments, communication stops being a cosmetic feature and becomes part of system performance. A model can be extraordinarily intelligent and still be useless if reaching it means breaking the task you're actually trying to do.",
+            text: "Once that happens a lot of our interface assumptions break. The person using AI might not be at a desk. They might be moving, fixing something, driving, treating someone, with their hands and eyes already busy. In those moments how fast you can reach the model stops being cosmetic and becomes part of whether it's useful at all. So the open problem I keep circling back to is shrinking the gap between human intent and useful intelligence. Not replacing reasoning, not replacing better models, just connecting them to people at the speed real life actually runs at. I could be wrong about how it plays out, but that's the part I can't stop thinking about.",
           },
           {
             type: "p",
-            text: "That's why I think one of the most important open problems in AI right now is shrinking the time between human intent and useful intelligence. Not replacing reasoning, not replacing better models. Just connecting those models to people at the speed real life actually demands. I'm still figuring out where the limits of that are, but that's the part I can't stop thinking about.",
-          },
-          {
-            type: "p",
-            text: "The keyboard will still exist. The screen will still exist. But I think we're moving toward a world where intelligence is something we can talk to while life is happening around us, and where the real breakthrough won't feel like talking to a computer at all. It'll just feel like thinking with one.",
+            text: "The keyboard will still be here. So will the screen. But I think we're moving toward a world where intelligence is just something you can talk to while life is happening around you, and the real shift is that it won't feel like talking to a computer at all. It'll just feel like thinking with one.",
           },
         ],
       },
