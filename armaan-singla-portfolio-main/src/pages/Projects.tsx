@@ -61,7 +61,7 @@ const more: Project[] = [
     title: "Will You Be My Valentine?",
     href: "https://github.com/armaansingla14/Valentines-day-Project",
     description:
-      "Playful single-page Next.js app: a typed state machine walks visitors through a mini-game, a dodging “No” button, and an animated date itinerary — entirely client-side.",
+      "Playful single-page Next.js app: a typed state machine walks visitors through a mini-game, a dodging “No” button, and an animated date itinerary, entirely client-side.",
   },
   {
     title: "Automated Fluid Dispenser",
