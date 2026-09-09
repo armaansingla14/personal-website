@@ -18,7 +18,6 @@ const artworks: Artwork[] = [
   { src: "/art/01-the-raven.jpg", title: "The Raven", artist: "Gustave Doré", year: "1883" },
   { src: "/art/02-valley-of-dry-bones.jpg", title: "The Vision of the Valley of Dry Bones", artist: "Gustave Doré", year: "1866" },
   { src: "/art/03-water-lily-pond.jpg", title: "The Water Lily Pond", artist: "Claude Monet", year: "1899" },
-  { src: "/art/04-dante-and-virgil.jpg", title: "Dante and Virgil Confronted by Demons", artist: "Gustave Doré", year: "1861" },
   { src: "/art/05-the-colossus.jpg", title: "The Colossus", artist: "Francisco de Goya", year: "1812" },
   { src: "/art/06-old-guitarist.jpg", title: "The Old Guitarist", artist: "Pablo Picasso", year: "1904" },
   { src: "/art/07-buzz-aldrin-moon.jpg", title: "Buzz Aldrin on the Moon", artist: "Neil Armstrong", year: "1969" },
