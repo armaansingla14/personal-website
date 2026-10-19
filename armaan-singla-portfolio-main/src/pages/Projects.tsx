@@ -1,4 +1,4 @@
-import { Youtube } from "lucide-react";
+import { FileText, Youtube } from "lucide-react";
 import Seo from "@/components/Seo";
 
 type Project = {
@@ -6,6 +6,7 @@ type Project = {
   href: string;
   description: string;
   video?: string;
+  doc?: string;
 };
 
 const featured: Project[] = [
@@ -38,6 +39,13 @@ const featured: Project[] = [
 ];
 
 const more: Project[] = [
+  {
+    title: "Coinbase Insights to Impact",
+    href: "https://github.com/armaansingla14/coinbase-insights-to-impact",
+    doc: "/docs/coinbase-insights-to-impact.pdf",
+    description:
+      "Analytics-engineering submission for Coinbase's Insights to Impact bounty: a Snowflake onboarding-funnel model, a signup reconciliation across three disagreeing systems, and a legacy metric pipeline rebuilt without breaking dashboards, backed by 125 tests on synthetic data.",
+  },
   {
     title: "Walking vs. Jumping Classifier",
     href: "https://github.com/armaansingla14/Walking-Running-292",
@@ -72,6 +80,9 @@ const more: Project[] = [
   },
 ];
 
+const iconLinkClass =
+  "text-primary transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded";
+
 const ProjectItem = ({
   project: p,
   featured = false,
@@ -101,9 +112,21 @@ const ProjectItem = ({
           rel="noopener noreferrer"
           aria-label={`Watch the ${p.title} demo video`}
           title="Watch demo video"
-          className="text-primary transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+          className={iconLinkClass}
         >
           <Youtube className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+        </a>
+      )}
+      {p.doc && (
+        <a
+          href={p.doc}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Read the ${p.title} write-up`}
+          title="Read the write-up (PDF)"
+          className={iconLinkClass}
+        >
+          <FileText className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
         </a>
       )}
     </h3>
