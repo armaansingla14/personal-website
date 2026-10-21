@@ -1,4 +1,4 @@
-import { FileText, Youtube } from "lucide-react";
+import { FileText, Globe, Youtube } from "lucide-react";
 import Seo from "@/components/Seo";
 
 type Project = {
@@ -7,9 +7,18 @@ type Project = {
   description: string;
   video?: string;
   doc?: string;
+  demo?: string;
 };
 
 const featured: Project[] = [
+  {
+    title: "Anti Radar",
+    href: "https://github.com/armaansingla14/Anti-Radar",
+    video: "https://anti-radar-one.vercel.app/video",
+    demo: "https://anti-radar-one.vercel.app",
+    description:
+      "Sourcing engine that surfaces technical founders and forming companies from GitHub, research, hiring and web signals before they become obvious, with every claim linked to its public source. Evaluated by hand on real public data (2,951 people, 1,113 signals) with 1,000+ tests in CI. Independent project built around Anti Fund's thesis.",
+  },
   {
     title: "Veritas",
     href: "https://github.com/armaansingla14/Veritas",
@@ -127,6 +136,18 @@ const ProjectItem = ({
           className={iconLinkClass}
         >
           <FileText className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+        </a>
+      )}
+      {p.demo && (
+        <a
+          href={p.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open the ${p.title} live demo`}
+          title="Open live demo"
+          className={iconLinkClass}
+        >
+          <Globe className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
         </a>
       )}
     </h3>
