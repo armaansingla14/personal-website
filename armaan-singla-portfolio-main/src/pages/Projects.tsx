@@ -27,6 +27,13 @@ const featured: Project[] = [
       "AI civic platform for the City of Kingston: answers municipal questions with cited sources, detects issues from photos, and anchors every interaction to Solana so answers are verifiably untampered. Won Best Use of Solana at QHacks 2026.",
   },
   {
+    title: "Coinbase Insights to Impact",
+    href: "https://github.com/armaansingla14/coinbase-insights-to-impact",
+    doc: "/docs/coinbase-insights-to-impact.pdf",
+    description:
+      "Selected as one of 20 winning submissions to Coinbase's Insights to Impact analytics challenge: a Snowflake onboarding-funnel model, a signup reconciliation across three disagreeing systems, and a legacy metric pipeline rebuilt without breaking dashboards, backed by 125 tests.",
+  },
+  {
     title: "PR Pilot",
     href: "https://github.com/armaansingla14/pr-pilot",
     video: "https://youtu.be/LS-mIn2PFcI",
@@ -48,13 +55,6 @@ const featured: Project[] = [
 ];
 
 const more: Project[] = [
-  {
-    title: "Coinbase Insights to Impact",
-    href: "https://github.com/armaansingla14/coinbase-insights-to-impact",
-    doc: "/docs/coinbase-insights-to-impact.pdf",
-    description:
-      "Analytics-engineering submission for Coinbase's Insights to Impact bounty: a Snowflake onboarding-funnel model, a signup reconciliation across three disagreeing systems, and a legacy metric pipeline rebuilt without breaking dashboards, backed by 125 tests on synthetic data.",
-  },
   {
     title: "Walking vs. Jumping Classifier",
     href: "https://github.com/armaansingla14/Walking-Running-292",
