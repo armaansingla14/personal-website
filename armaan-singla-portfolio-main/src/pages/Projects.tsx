@@ -38,7 +38,7 @@ const featured: Project[] = [
     href: "https://github.com/armaansingla14/pr-pilot",
     video: "https://youtu.be/LS-mIn2PFcI",
     description:
-      "Full-stack ML app that scores a git diff's risk with a trained RandomForest and returns an actionable review checklist in milliseconds — 0.84 AUC, ~6 ms inference, automated CI/CD.",
+      "Full-stack ML app that scores a git diff's risk with a trained RandomForest and returns an actionable review checklist in milliseconds: 0.84 AUC, ~6 ms inference, automated CI/CD.",
   },
   {
     title: "AI Boss Fight",
@@ -60,7 +60,7 @@ const more: Project[] = [
     href: "https://github.com/armaansingla14/Walking-Running-292",
     video: "https://youtu.be/yd7NedTEr9g",
     description:
-      "End-to-end ML pipeline classifying human motion from phone accelerometer data — HDF5 storage, signal preprocessing, feature engineering, and a PyQt5 desktop app that labels new recordings.",
+      "End-to-end ML pipeline classifying human motion from phone accelerometer data: HDF5 storage, signal preprocessing, feature engineering, and a PyQt5 desktop app that labels new recordings.",
   },
   {
     title: "LangChain RAG Agent Demo",

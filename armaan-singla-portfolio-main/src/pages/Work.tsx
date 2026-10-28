@@ -15,7 +15,7 @@ const current: Experience[] = [
     href: "https://www.amd.com/",
     logo: "/logos/amd.jpg",
     role: "Software Engineer Intern",
-    period: "Summer 2026",
+    period: "Summer & Fall 2026",
     description:
       "On the Product Security Office (PSO) team, building fuzzing agents that uncover security vulnerabilities. Also building AI agents that automate the team's workflows.",
   },
